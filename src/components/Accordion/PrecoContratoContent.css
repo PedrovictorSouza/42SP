@@ -1,0 +1,95 @@
+.preco-contrato-content {
+  width: 100%;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.preco-contrato-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.preco-contrato-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.preco-contrato-text-section {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.preco-contrato-text-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 1);
+}
+
+.preco-contrato-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+  line-height: 1.8;
+}
+
+.preco-contrato-details-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.preco-contrato-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preco-contrato-detail-box {
+  background: rgba(240, 240, 240, 1);
+  padding: 1.5rem;
+  border-radius: 0;
+}
+
+.preco-contrato-detail-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  margin-bottom: 0.5rem;
+}
+
+.preco-contrato-detail-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .preco-contrato-sections {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .preco-contrato-text-section {
+    padding-left: 1rem;
+  }
+
+  .preco-contrato-detail-box {
+    padding: 1.25rem;
+  }
+}
+

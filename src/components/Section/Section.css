@@ -28,6 +28,10 @@
   min-height: 100vh;
 }
 
+.section-container.with-custom-content {
+  padding: 0;
+}
+
 .section-container.with-header .section-content-wrapper {
   padding-top: 2rem;
 }
@@ -80,6 +84,12 @@ h1.section-title {
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+}
+
+.section-custom-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-container.with-header .section-left {

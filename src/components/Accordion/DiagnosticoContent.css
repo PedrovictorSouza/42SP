@@ -1,0 +1,123 @@
+.diagnostico-content {
+  width: 100%;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.diagnostico-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding: 0;
+}
+
+.diagnostico-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.diagnostico-section {
+  padding: 2rem;
+  border-radius: 0;
+}
+
+.mission-types-section {
+  background: rgba(240, 240, 240, 1);
+}
+
+.execution-formats-section {
+  background: rgba(255, 255, 255, 1);
+}
+
+.diagnostico-section-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.diagnostico-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.diagnostico-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.diagnostico-item-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.diagnostico-item-description {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.execution-formats-section .diagnostico-item {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.execution-formats-section .diagnostico-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 40px;
+  height: 1px;
+  background: rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 768px) {
+  .diagnostico-sections {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .diagnostico-section {
+    padding: 1.5rem;
+  }
+
+  .diagnostico-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .diagnostico-item-title {
+    min-width: auto;
+  }
+
+  .execution-formats-section .diagnostico-item {
+    padding-left: 0;
+  }
+
+  .execution-formats-section .diagnostico-item::before {
+    display: none;
+  }
+}
+

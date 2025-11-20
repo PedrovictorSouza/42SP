@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Section.css'
 import { useASCIIShift } from '../ScrollText/useASCIIShift'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
@@ -88,9 +88,9 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   )
 }
 
-function Section({ text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false }) {
+function Section({ text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false, customContent }) {
   const containerRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(!headerContent && !sectionTitle)
+  const [isVisible, setIsVisible] = useState(!headerContent && !sectionTitle && !customContent)
 
   useEffect(() => {
     const container = containerRef.current
@@ -118,7 +118,7 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
       }
     }
 
-    if (sectionTitle) {
+    if (sectionTitle || customContent) {
       setTimeout(() => {
         setIsVisible(true)
       }, delay)
@@ -130,12 +130,12 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
-      if (!sectionTitle) {
+      if (!sectionTitle && !customContent) {
         window.removeEventListener('scroll', handleScroll)
         window.removeEventListener('resize', handleScroll)
       }
     }
-  }, [delay, isVisible, sectionTitle])
+  }, [delay, isVisible, sectionTitle, customContent])
 
   const splitTextIntoBlocks = (textString) => {
     if (!textString) return []
@@ -195,7 +195,7 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
   return (
     <div 
       ref={containerRef} 
-      className={`section-container ${headerContent ? 'with-header' : ''} ${backgroundContent ? 'with-background' : ''}`}
+      className={`section-container ${headerContent ? 'with-header' : ''} ${backgroundContent ? 'with-background' : ''} ${customContent ? 'with-custom-content' : ''}`}
       style={backgroundColor ? { '--section-bg-color': backgroundColor } : {}}
     >
       {backgroundContent && (
@@ -214,7 +214,13 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
           <h1 className="section-title">{sectionTitle}</h1>
         )}
         <div className="section-left">
-          {gridLayout ? (
+          {customContent ? (
+            <div className="section-custom-content">
+              {typeof customContent === 'object' && customContent !== null && 'type' in customContent
+                ? React.cloneElement(customContent, { isVisible })
+                : customContent}
+            </div>
+          ) : gridLayout ? (
             <div className="section-grid-2x2">
               <div className="section-grid-cell">
                 {consoleStyle ? (

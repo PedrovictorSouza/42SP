@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react'
 import './LoadingScreen.css'
 import { useLoadingScreen } from './LoadingScreenContext'
 
-const loremIpsum1 = 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-const loremIpsum2 = 'Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+const loremIpsum1 = 'Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno. A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos.'
+const loremIpsum2 = 'A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional.'
 
-const ACT_1_DURATION = 0.3 + (loremIpsum2.split(' ').length * 0.05) + 0.6
+const ACT_1_DURATION = 5.0
 const ACT_2_DURATION = 0.5
 const ACT_3_DURATION = 0.8
 
 function TextBlock({ text, startDelay = 0, wordDelay = 0.05 }) {
-  const words = text.split(' ')
+  const words = text.split(' ').filter(word => word.length > 0)
 
   return (
     <div className="text-block">
@@ -22,7 +22,8 @@ function TextBlock({ text, startDelay = 0, wordDelay = 0.05 }) {
             animationDelay: `${startDelay + index * wordDelay}s`
           }}
         >
-          {word}{' '}
+          {word}
+          {index < words.length - 1 && ' '}
         </span>
       ))}
     </div>
@@ -30,11 +31,17 @@ function TextBlock({ text, startDelay = 0, wordDelay = 0.05 }) {
 }
 
 function Act1() {
+  const totalWords1 = loremIpsum1.split(' ').length
+  const totalWords2 = loremIpsum2.split(' ').length
+  const totalWords = totalWords1 + totalWords2
+  const wordDelay = 5.0 / totalWords
+  const secondBlockStart = totalWords1 * wordDelay
+
   return (
     <div className="act-1">
       <div className="text-blocks-wrapper">
-        <TextBlock text={loremIpsum1} startDelay={0} wordDelay={0.05} />
-        <TextBlock text={loremIpsum2} startDelay={0.3} wordDelay={0.05} />
+        <TextBlock text={loremIpsum1} startDelay={0} wordDelay={wordDelay} />
+        <TextBlock text={loremIpsum2} startDelay={secondBlockStart} wordDelay={wordDelay} />
       </div>
     </div>
   )

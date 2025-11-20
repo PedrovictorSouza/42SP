@@ -1,0 +1,74 @@
+.setup-squads-content {
+  width: 100%;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.setup-squads-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.setup-squads-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.setup-squads-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-squads-section-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: rgba(200, 200, 200, 1);
+  text-transform: lowercase;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.setup-squads-text-wrapper {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.setup-squads-text-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 1);
+}
+
+.setup-squads-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .setup-squads-sections {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .setup-squads-text-wrapper {
+    padding-left: 1rem;
+  }
+}
+

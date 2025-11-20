@@ -35,6 +35,8 @@
   line-height: 1.8;
   font-family: 'Zen Kaku Gothic New', sans-serif;
   max-width: 500px;
+  white-space: normal;
+  word-spacing: normal;
 }
 
 .word {
