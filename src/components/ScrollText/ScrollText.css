@@ -1,0 +1,55 @@
+.scroll-text-container {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 15vh 2rem 4rem 2rem;
+  z-index: 10001;
+  margin-top: 100vh;
+  pointer-events: auto;
+  background: transparent;
+  padding-left: 15%;
+}
+
+.scroll-text {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.scroll-text.as {
+  cursor: pointer;
+  user-select: none;
+}
+
+.scroll-text.as::selection {
+  background: transparent;
+}
+
+.scroll-text.visible {
+  opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+  .scroll-text-container {
+    padding: 2rem 1rem;
+  }
+  
+  .scroll-text {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}
+

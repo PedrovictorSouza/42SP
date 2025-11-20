@@ -1,0 +1,84 @@
+.numbers-42-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: auto;
+  pointer-events: none;
+  z-index: 9999;
+  display: grid;
+  grid-template-columns: auto 0.5fr;
+  grid-template-rows: auto auto;
+  align-items: end;
+  gap: 0.5rem -5rem;
+  --lab-font-size: 20vw;
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 0;
+  justify-items: start;
+}
+
+.numbers-42-container > .numbers-wrapper {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+}
+
+.lab-text {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 4;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: var(--lab-font-size, 20vw);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeInNumber 1s ease-out forwards;
+  opacity: 0;
+  margin: 0;
+  line-height: 1;
+  pointer-events: auto;
+  user-select: text;
+  cursor: text;
+  max-width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.developing-futures-text {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+  z-index: 4;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 400;
+  font-size: 3.5vw;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeInNumber 1s ease-out forwards;
+  opacity: 0;
+  margin: 0;
+  line-height: 1.2;
+  pointer-events: auto;
+  user-select: text;
+  cursor: text;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@keyframes fadeInNumber {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

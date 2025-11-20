@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,15 +30,24 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  background: #000;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
   min-width: 320px;
+  user-select: none;
+  cursor: grab;
+}
+
+body.dragging {
+  cursor: grabbing;
 }
 
 #root {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 h1 {

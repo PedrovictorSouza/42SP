@@ -2,48 +2,45 @@ import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
-  const earnedBadges = 0
-  const totalBadges = 6
   const location = useLocation()
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
-        <Link 
-          to="/home" 
-          className={`navbar-link ${location.pathname === '/home' ? 'active' : ''}`}
-        >
-          home
-        </Link>
-      </div>
-      <div className="navbar-progress">
-        <p className="progress-title">Seu progresso na jornada</p>
-        <div className="progress-bar-container">
-          <div className="progress-bar" style={{ width: `${(earnedBadges / totalBadges) * 100}%` }}></div>
+    <header className="header">
+      <div className="nav-section">
+        <div className="logo-container">
+          <div className="logo-circles">
+            <div className="circle circle-1"></div>
+            <div className="circle circle-2"></div>
+          </div>
         </div>
-        <p className="progress-text">{earnedBadges}/{totalBadges} badges</p>
       </div>
-      <div className="navbar-links">
-        <Link 
-          to="/badges" 
-          className={`navbar-link ${location.pathname === '/badges' ? 'active' : ''}`}
-        >
-          badge
-        </Link>
-        <Link 
-          to="/missions" 
-          className={`navbar-link ${location.pathname === '/missions' ? 'active' : ''}`}
-        >
-          missões
-        </Link>
-        <Link 
-          to="/ide" 
-          className={`navbar-link ${location.pathname === '/ide' ? 'active' : ''}`}
-        >
-          IDE
-        </Link>
+      <div className="values-section">
+        <h3>+Menu</h3>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/badges">Badges</Link></li>
+          <li><Link to="/missions">Missões</Link></li>
+          <li><Link to="/ide">IDE</Link></li>
+        </ul>
       </div>
-    </nav>
+      <div className="location-section">
+        <h3>+Studio</h3>
+        <p>São Paulo</p>
+        <p>Brasil</p>
+      </div>
+      <div className="contact-section">
+        <h3>+Connect</h3>
+        <p><a href="mailto:contato@lab42.com.br">contato@lab42.com.br</a></p>
+      </div>
+      <div className="social-section">
+        <h3>+Follow</h3>
+        <ul>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </header>
   )
 }
 
