@@ -1,7 +1,28 @@
-import { Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './Footer.css'
 
 function Footer() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleAnchorClick = (e, anchorId) => {
+    e.preventDefault()
+    if (location.pathname !== '/home') {
+      navigate('/home')
+      setTimeout(() => {
+        const element = document.getElementById(anchorId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    } else {
+      const element = document.getElementById(anchorId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="nav-section">
@@ -15,10 +36,10 @@ function Footer() {
       <div className="values-section">
         <h3>+Menu</h3>
         <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/badges">Badges</Link></li>
-          <li><Link to="/missions">Missões</Link></li>
-          <li><Link to="/ide">IDE</Link></li>
+          <li><a href="#home" onClick={(e) => handleAnchorClick(e, 'home')}>Home</a></li>
+          <li><a href="#disclaimer" onClick={(e) => handleAnchorClick(e, 'disclaimer')}>Disclaimer</a></li>
+          <li><a href="#plano-de-voo" onClick={(e) => handleAnchorClick(e, 'plano-de-voo')}>Plano de Voo</a></li>
+          <li><a href="#processo" onClick={(e) => handleAnchorClick(e, 'processo')}>Processo</a></li>
         </ul>
       </div>
       <div className="location-section">

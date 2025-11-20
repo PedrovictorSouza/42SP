@@ -6,12 +6,14 @@ import LifelongImpact from '../../LifelongImpact/LifelongImpact'
 
 const sections = [
       {
+        id: 'home',
         title: '[ DESENVOLVEMOS SOLUÇÕES DIGITAIS ]',
         text: 'O Lab42 é uma iniciativa da 42 São Paulo, com apoio da Mastertech. Funciona como um laboratório de inovação aplicada que transforma desafios reais de negócios em soluções digitais desenvolvidas por squads de estudantes da 42SP.',
         delay: 0,
         headerContent: <ParallaxText />
       },
   {
+    id: 'disclaimer',
     title: '[ DISCLAIMER ]',
     text: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares. Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso. As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.',
     delay: 200,
@@ -22,6 +24,7 @@ const sections = [
     bottomRightText: 'As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.'
   },
   {
+    id: 'plano-de-voo',
     title: '[ MISSÃO ]',
     text: 'Cada missão começa com um diagnóstico técnico e pedagógico que permite compreender a natureza do desafio e estimar seu tamanho, complexidade e duração. Com base nesse entendimento, o conselho do laboratório valida a missão e forma os squads, combinando perfis e expertises de acordo com as exigências de cada caso.',
     delay: 400,
@@ -33,6 +36,7 @@ const sections = [
     secondColumnText: 'Com base nesse\nentendimento, o\nconselho do laboratório\nvalida a missão e forma\nos squads, combinando\nperfis e expertises de\nacordo com as exigências\nde cada caso'
   },
   {
+    id: 'processo',
     title: '',
     text: '',
     delay: 500,
@@ -52,6 +56,7 @@ function HomeSections() {
       {sections.map((section, index) => (
         <Section
           key={index}
+          id={section.id}
           text={section.text}
           secondParagraph={section.secondParagraph}
           delay={section.delay}

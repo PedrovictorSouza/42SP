@@ -88,7 +88,7 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   )
 }
 
-function Section({ text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false, customContent }) {
+function Section({ id, text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false, customContent }) {
   const containerRef = useRef(null)
   const [isVisible, setIsVisible] = useState(!headerContent && !sectionTitle && !customContent)
 
@@ -194,6 +194,7 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
 
   return (
     <div 
+      id={id}
       ref={containerRef} 
       className={`section-container ${headerContent ? 'with-header' : ''} ${backgroundContent ? 'with-background' : ''} ${customContent ? 'with-custom-content' : ''}`}
       style={backgroundColor ? { '--section-bg-color': backgroundColor } : {}}
