@@ -3,6 +3,7 @@ import './Section.css'
 import { useASCIIShift } from '../ScrollText/useASCIIShift'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
 import ParallaxIgnition from '../Home/ParallaxIgnition/ParallaxIgnition'
+import CascadeText from './CascadeText/CascadeText'
 
 const glitchChars = '.,·-─~+:;=*π""┐┌┘┴┬╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@0123456789*'
 
@@ -87,9 +88,9 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   )
 }
 
-function Section({ text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText }) {
+function Section({ text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false }) {
   const containerRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(!headerContent) // Seções sem header começam visíveis
+  const [isVisible, setIsVisible] = useState(!headerContent && !sectionTitle)
 
   useEffect(() => {
     const container = containerRef.current
@@ -103,7 +104,6 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
       const elementTop = rect.top
       const elementBottom = rect.bottom
       
-      // Verifica se o elemento está visível na viewport (com margem de 100px)
       const isInViewport = elementTop < windowHeight + 100 && elementBottom > -100
       
       if (isInViewport) {
@@ -114,21 +114,28 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
           }, delay)
         }
       } else if (elementTop > windowHeight * 2) {
-        // Se o elemento está muito acima da viewport, ocultar
         setIsVisible(false)
       }
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll, { passive: true })
-    handleScroll()
+    if (sectionTitle) {
+      setTimeout(() => {
+        setIsVisible(true)
+      }, delay)
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      window.addEventListener('resize', handleScroll, { passive: true })
+      handleScroll()
+    }
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
+      if (!sectionTitle) {
+        window.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
+      }
     }
-  }, [delay, isVisible])
+  }, [delay, isVisible, sectionTitle])
 
   const splitTextIntoBlocks = (textString) => {
     if (!textString) return []
@@ -188,9 +195,14 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
   return (
     <div 
       ref={containerRef} 
-      className={`section-container ${headerContent ? 'with-header' : ''}`}
+      className={`section-container ${headerContent ? 'with-header' : ''} ${backgroundContent ? 'with-background' : ''}`}
       style={backgroundColor ? { '--section-bg-color': backgroundColor } : {}}
     >
+      {backgroundContent && (
+        <div className="section-background-content">
+          {backgroundContent}
+        </div>
+      )}
       {headerContent && (
         <div className="section-header">
           {headerContent}
@@ -198,24 +210,47 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
       )}
       <div className="section-content-wrapper">
         {headerContent && <div className="section-top-line"></div>}
+        {sectionTitle && (
+          <h1 className="section-title">{sectionTitle}</h1>
+        )}
         <div className="section-left">
           {gridLayout ? (
             <div className="section-grid-2x2">
               <div className="section-grid-cell">
-                <div 
-                  className={`section-text ${isVisible ? 'visible' : ''}`}
-                  style={{ transitionDelay: '0s' }}
-                >
-                  {topLeftText || ''}
-                </div>
+                {consoleStyle ? (
+                  <CascadeText 
+                    text={topLeftText || ''}
+                    isVisible={isVisible}
+                    delay={0}
+                    charDelay={0.02}
+                    consoleStyle={true}
+                  />
+                ) : (
+                  <div 
+                    className={`section-text ${isVisible ? 'visible' : ''}`}
+                    style={{ transitionDelay: '0s' }}
+                  >
+                    {topLeftText || ''}
+                  </div>
+                )}
               </div>
               <div className="section-grid-cell">
-                <div 
-                  className={`section-text ${isVisible ? 'visible' : ''}`}
-                  style={{ transitionDelay: '0.1s' }}
-                >
-                  {topRightText || ''}
-                </div>
+                {consoleStyle ? (
+                  <CascadeText 
+                    text={topRightText || ''}
+                    isVisible={isVisible}
+                    delay={0.1}
+                    charDelay={0.02}
+                    consoleStyle={true}
+                  />
+                ) : (
+                  <div 
+                    className={`section-text ${isVisible ? 'visible' : ''}`}
+                    style={{ transitionDelay: '0.1s' }}
+                  >
+                    {topRightText || ''}
+                  </div>
+                )}
               </div>
               <div className="section-grid-cell section-full-column">
                 <ParallaxIgnition />
@@ -224,30 +259,42 @@ function Section({ text, secondParagraph, delay = 0, backgroundColor, headerCont
                 <img src={jellyfishImage} alt="" className="section-grid-image" />
               </div>
               <div className="section-grid-cell">
-                <div 
-                  className={`section-text ${isVisible ? 'visible' : ''}`}
-                  style={{ transitionDelay: '0.2s' }}
-                >
-                  {bottomRightText || ''}
-                </div>
+                {consoleStyle ? (
+                  <CascadeText 
+                    text={bottomRightText || ''}
+                    isVisible={isVisible}
+                    delay={0.2}
+                    charDelay={0.02}
+                    consoleStyle={true}
+                  />
+                ) : (
+                  <div 
+                    className={`section-text ${isVisible ? 'visible' : ''}`}
+                    style={{ transitionDelay: '0.2s' }}
+                  >
+                    {bottomRightText || ''}
+                  </div>
+                )}
               </div>
             </div>
           ) : twoColumns ? (
             <div className="section-text-columns">
               <div className="section-text-column">
-                <TextBlock 
+                <CascadeText 
                   text={firstColText}
                   isVisible={isVisible}
                   delay={0}
-                  isFirstBlock={false}
+                  charDelay={0.02}
+                  consoleStyle={consoleStyle}
                 />
               </div>
               <div className="section-text-column">
-                <TextBlock 
+                <CascadeText 
                   text={secondColTextValue}
                   isVisible={isVisible}
                   delay={0.1}
-                  isFirstBlock={false}
+                  charDelay={0.02}
+                  consoleStyle={consoleStyle}
                 />
               </div>
             </div>

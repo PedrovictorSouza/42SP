@@ -6,10 +6,26 @@
   z-index: 10001;
   pointer-events: auto;
   background: var(--section-bg-color, transparent);
+  overflow: hidden;
+}
+
+.section-background-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .section-container.with-header {
   padding: 0 10% 8rem 3%;
+}
+
+.section-container.with-background {
+  min-height: 100vh;
 }
 
 .section-container.with-header .section-content-wrapper {
@@ -29,6 +45,27 @@
 
 .section-content-wrapper {
   display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  color: #ffffff;
+  text-align: left;
+  margin: 0 0 3rem 0;
+  padding: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+h1.section-title {
+  font-size: 6em;
 }
 
 .section-top-line {

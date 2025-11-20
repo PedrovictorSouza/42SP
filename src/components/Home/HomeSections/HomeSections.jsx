@@ -1,5 +1,6 @@
 import Section from '../../Section/Section'
 import ParallaxText from '../ParallaxText/ParallaxText'
+import WorldMapGrid from '../WorldMapGrid/WorldMapGrid'
 
 const sections = [
       {
@@ -13,6 +14,7 @@ const sections = [
     text: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares. Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso. As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.',
     delay: 200,
     gridLayout: true,
+    consoleStyle: true,
     topLeftText: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares.',
     topRightText: 'Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso.',
     bottomRightText: 'As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.'
@@ -21,7 +23,12 @@ const sections = [
     title: '[ MISSÃO ]',
     text: 'Cada missão começa com um diagnóstico técnico e pedagógico que permite compreender a natureza do desafio e estimar seu tamanho, complexidade e duração. Com base nesse entendimento, o conselho do laboratório valida a missão e forma os squads, combinando perfis e expertises de acordo com as exigências de cada caso.',
     delay: 400,
-    backgroundColor: 'rgba(0, 0, 255, 0.2)'
+    backgroundContent: <WorldMapGrid />,
+    sectionTitle: <>PLANO DE<br />VÔO</>,
+    twoColumns: true,
+    consoleStyle: true,
+    firstColumnText: 'Cada missão começa\ncom um diagnóstico\ntécnico e pedagógico que\npermite compreender a\nnatureza do desafio e\nestimar seu tamanho,\ncomplexidade e duração.',
+    secondColumnText: 'Com base nesse\nentendimento, o\nconselho do laboratório\nvalida a missão e forma\nos squads, combinando\nperfis e expertises de\nacordo com as exigências\nde cada caso'
   },
   {
     title: '[ O FLOW DO LAB42 ]',
@@ -79,6 +86,9 @@ function HomeSections() {
           topLeftText={section.topLeftText}
           topRightText={section.topRightText}
           bottomRightText={section.bottomRightText}
+          backgroundContent={section.backgroundContent}
+          sectionTitle={section.sectionTitle}
+          consoleStyle={section.consoleStyle}
         />
       ))}
     </>

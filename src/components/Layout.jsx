@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import FeedbackMarker from './FeedbackMarker/FeedbackMarker'
 import { LoadingScreenProvider, useLoadingScreen, LoadingScreen } from './LoadingScreen'
+import GlobalGradientOverlay from './GlobalGradientOverlay/GlobalGradientOverlay'
 
 function LayoutContent() {
   const { isVisible } = useLoadingScreen()
@@ -40,6 +41,7 @@ function LayoutContent() {
   return (
     <>
       <LoadingScreen />
+      <GlobalGradientOverlay />
       {!isVisible && (
         <>
           <Navbar />
