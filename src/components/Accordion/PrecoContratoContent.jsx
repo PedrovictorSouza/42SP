@@ -29,17 +29,15 @@ function PrecoContratoContent() {
             detalhando:
           </div>
         </div>
-        <div className="preco-contrato-details-section">
-          <div className="preco-contrato-details">
-            {detalhes.map((item, index) => (
-              <div key={index} className="preco-contrato-detail-box">
-                <div className="preco-contrato-detail-title">{item.title}</div>
-                {item.subtitle && (
-                  <div className="preco-contrato-detail-subtitle">{item.subtitle}</div>
-                )}
-              </div>
-            ))}
-          </div>
+        <div className="preco-contrato-details">
+          {detalhes.map((item, index) => (
+            <div key={index} className="preco-contrato-detail-box">
+              <div className="preco-contrato-detail-title">{item.title}</div>
+              {item.subtitle && (
+                <div className="preco-contrato-detail-subtitle">{item.subtitle}</div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -47,5 +45,7 @@ function PrecoContratoContent() {
 }
 
 export default PrecoContratoContent
+
+
 
 

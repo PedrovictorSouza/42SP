@@ -7,6 +7,7 @@
   pointer-events: auto;
   background: var(--section-bg-color, transparent);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .section-background-content {
@@ -31,7 +32,12 @@
 }
 
 .section-container.with-custom-content {
-  padding: 10vh 3% 8rem 3%;
+
+}
+
+#lifelong-impact.section-container.with-custom-content,
+#zeladoria.section-container.with-custom-content {
+  padding: 0;
 }
 
 .section-container.with-header .section-content-wrapper {

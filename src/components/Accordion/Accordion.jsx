@@ -37,19 +37,23 @@ const accordionItems = [
 function Accordion({ isVisible = true }) {
   const [expandedId, setExpandedId] = useState(null)
 
-  const handleItemClick = (itemId) => {
-    setExpandedId(expandedId === itemId ? null : itemId)
-  }
-
   return (
     <div className={`accordion-container ${isVisible ? 'visible' : ''}`}>
       {accordionItems.map((item, index) => {
         const isExpanded = expandedId === item.id
+        const ContentComponent = {
+          'diagnostico': DiagnosticoContent,
+          'preco-contrato': PrecoContratoContent,
+          'setup-squads': SetupSquadsContent,
+          'ciclo-sprints': CicloSprintsContent,
+          'delivery': DeliveryContent
+        }[item.id]
+
         return (
           <div key={item.id} className="accordion-item-wrapper">
             <button
               className={`accordion-item ${isExpanded ? 'expanded' : ''}`}
-              onClick={() => handleItemClick(item.id)}
+              onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
               aria-expanded={isExpanded}
             >
               <div className="accordion-title">
@@ -60,29 +64,9 @@ function Accordion({ isVisible = true }) {
                 {item.description}
               </div>
             </button>
-            {isExpanded && item.id === 'diagnostico' && (
+            {isExpanded && ContentComponent && (
               <div className="accordion-expanded-content">
-                <DiagnosticoContent />
-              </div>
-            )}
-            {isExpanded && item.id === 'preco-contrato' && (
-              <div className="accordion-expanded-content">
-                <PrecoContratoContent />
-              </div>
-            )}
-            {isExpanded && item.id === 'setup-squads' && (
-              <div className="accordion-expanded-content">
-                <SetupSquadsContent />
-              </div>
-            )}
-            {isExpanded && item.id === 'ciclo-sprints' && (
-              <div className="accordion-expanded-content">
-                <CicloSprintsContent />
-              </div>
-            )}
-            {isExpanded && item.id === 'delivery' && (
-              <div className="accordion-expanded-content">
-                <DeliveryContent />
+                <ContentComponent />
               </div>
             )}
             {index < accordionItems.length - 1 && (

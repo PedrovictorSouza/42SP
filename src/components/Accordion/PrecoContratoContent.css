@@ -46,11 +46,6 @@
   line-height: 1.8;
 }
 
-.preco-contrato-details-section {
-  display: flex;
-  flex-direction: column;
-}
-
 .preco-contrato-details {
   display: flex;
   flex-direction: column;

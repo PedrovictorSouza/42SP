@@ -3,7 +3,7 @@ import { useParallax } from '../hooks/useParallax'
 import ParallaxNumbers from '../ParallaxNumbers/ParallaxNumbers'
 import './ParallaxText.css'
 
-function ParallaxText({ labText = 'LAB', developingText = 'DEVELOPING FUTURES' }) {
+function ParallaxText({ labText = 'LAB' }) {
   const containerRef = useRef(null)
   const labTextRef = useRef(null)
   const developingFuturesRef = useRef(null)

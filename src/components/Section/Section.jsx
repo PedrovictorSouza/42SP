@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import './Section.css'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
 import CascadeText from './CascadeText/CascadeText'
@@ -23,7 +23,6 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
 function Section({ id, text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false, customContent }) {
   const containerRef = useRef(null)
   const autoShow = !!(sectionTitle || customContent)
-  const initialVisible = !headerContent && !sectionTitle && !customContent
   
   const isVisible = useScrollDetection(containerRef, {
     delay,
@@ -33,32 +32,6 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
     dependencies: [sectionTitle, customContent]
   })
 
-  const splitTextIntoBlocks = (textString) => {
-    if (!textString) return []
-    const sentences = textString.split(/\.(?=\s|$)/).filter(s => s.trim().length > 0)
-    const blocks = []
-    let currentBlock = ''
-    
-    sentences.forEach((sentence, index) => {
-      const trimmed = sentence.trim()
-      if (!trimmed) return
-      
-      if (currentBlock.length + trimmed.length > 120 && currentBlock.length > 0) {
-        blocks.push(currentBlock.trim() + '.')
-        currentBlock = trimmed
-      } else {
-        currentBlock += (currentBlock ? ' ' : '') + trimmed
-      }
-    })
-    
-    if (currentBlock) {
-      blocks.push(currentBlock.trim() + (currentBlock.endsWith('.') ? '' : '.'))
-    }
-    
-    return blocks.length > 0 ? blocks : [textString]
-  }
-
-  // Dividir texto em duas partes para layout de duas colunas
   const splitTextIntoTwoColumns = (textString) => {
     if (!textString) return ['', '']
     const sentences = textString.split(/\.(?=\s|$)/).filter(s => s.trim().length > 0)
@@ -68,11 +41,8 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
     return [firstHalf, secondHalf]
   }
 
-  const textBlocks = headerContent && secondParagraph 
-    ? [text] 
-    : [text] // Renderizar como um único parágrafo
+  const textBlocks = [text]
 
-  // Se firstColumnText e secondColumnText foram fornecidos, usar eles; caso contrário, dividir automaticamente
   let firstColText = text
   let secondColTextValue = ''
   if (twoColumns) {
@@ -81,7 +51,6 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
       secondColTextValue = secondColumnText
     } else if (firstColumnText) {
       firstColText = firstColumnText
-      // Remover o texto da primeira coluna do texto completo para obter a segunda coluna
       secondColTextValue = text.replace(firstColumnText, '').trim()
     } else {
       [firstColText, secondColTextValue] = splitTextIntoTwoColumns(text)

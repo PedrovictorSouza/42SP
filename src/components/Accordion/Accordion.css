@@ -1,11 +1,4 @@
-.accordion-container {
-  max-width: 100%;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  background: rgba(0, 0, 0, 1);
-  padding: 3rem 0;
-  border-radius: 0;
-}
+
 
 .accordion-container.visible {
   opacity: 1;
@@ -13,6 +6,8 @@
 
 .accordion-item-wrapper {
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .accordion-item {
@@ -21,12 +16,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
+  gap: 2rem;
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
   transition: all 0.3s ease;
   font-family: 'Special Gothic Expanded One', sans-serif;
+  box-sizing: border-box;
 }
 
 .accordion-item:hover {
@@ -63,6 +60,7 @@
   max-width: 60%;
   line-height: 1.6;
   transition: all 0.3s ease;
+  flex-shrink: 1;
 }
 
 .accordion-item.expanded .accordion-description {
@@ -73,6 +71,7 @@
 .accordion-expanded-content {
   width: 100%;
   padding: 2rem 0;
+  padding-right: 3%;
   animation: slideDown 0.3s ease;
 }
 
@@ -88,21 +87,30 @@
 }
 
 .accordion-divider {
-  width: 100%;
+  width: calc(100% - 0px);
   height: 1px;
   background: rgba(255, 255, 255, 1);
   margin: 0;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
   .accordion-container {
-    padding: 3rem 0;
+    padding: 3rem 5% 3rem 5%;
+  }
+  
+  .accordion-expanded-content {
+    padding-right: 5%;
   }
 }
 
 @media (max-width: 768px) {
   .accordion-container {
-    padding: 3rem 0;
+    padding: 3rem 5% 3rem 5%;
+  }
+  
+  .accordion-expanded-content {
+    padding-right: 5%;
   }
   
   .accordion-item {
@@ -125,7 +133,11 @@
 
 @media (max-width: 480px) {
   .accordion-container {
-    padding: 3rem 0;
+    padding: 3rem 1.5rem 3rem 1.5rem;
+  }
+  
+  .accordion-expanded-content {
+    padding-right: 1.5rem;
   }
 }
 

@@ -46,15 +46,19 @@ const sections = [
     customContent: <Accordion />
   },
   {
+    id: 'lifelong-impact',
     title: '',
     text: '',
     delay: 1200,
+    backgroundColor: 'rgb(5,178,193)',
     customContent: <LifelongImpact />
   },
   {
+    id: 'zeladoria',
     title: '',
     text: '',
     delay: 1400,
+    backgroundColor: 'rgb(5,178,193)',
     customContent: <Zeladoria />
   }
 ]
