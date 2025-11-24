@@ -8,12 +8,12 @@
   font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
   text-transform: lowercase;
   text-align: center;
   margin: 0 0 2rem 0;
   padding: 0 0 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 
 .preco-contrato-sections {
@@ -35,14 +35,14 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgba(0, 0, 0, 1);
+  background: rgba(255, 255, 255, 1);
 }
 
 .preco-contrato-text {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   font-weight: 300;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
   line-height: 1.8;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .preco-contrato-detail-box {
-  background: rgba(240, 240, 240, 1);
+  background: rgba(30, 30, 30, 1);
   padding: 1.5rem;
   border-radius: 0;
 }
@@ -67,7 +67,7 @@
   font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   font-weight: 700;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
   margin-bottom: 0.5rem;
 }
 
@@ -75,7 +75,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(0.75rem, 1.2vw, 1rem);
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 @media (max-width: 768px) {
@@ -92,4 +92,5 @@
     padding: 1.25rem;
   }
 }
+
 

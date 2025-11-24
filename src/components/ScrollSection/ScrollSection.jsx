@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import './ScrollSection.css'
 import { useASCIIShift } from '../ScrollText/useASCIIShift'
+import { useScrollDetection } from '../Home/hooks/useScrollDetection'
 
 const glitchChars = '.,·-─~+:;=*π""┐┌┘┴┬╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@0123456789*'
 
@@ -8,47 +9,14 @@ function ScrollSection({ text, title, delay = 0 }) {
   const containerRef = useRef(null)
   const textRef = useRef(null)
   const titleRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(false)
   const autoGlitchIntervalRef = useRef(null)
 
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    let timeoutId = null
-
-    const handleScroll = () => {
-      const rect = container.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const elementTop = rect.top
-      const elementBottom = rect.bottom
-      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
-      
-      const triggerPoint = windowHeight * 0.9
-      const isInViewport = elementTop < triggerPoint && elementBottom > -200
-      
-      if (isInViewport) {
-        if (!isVisible) {
-          if (timeoutId) clearTimeout(timeoutId)
-          timeoutId = setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
-        }
-      } else if (scrollY === 0 && elementTop > windowHeight * 1.5) {
-        setIsVisible(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll, { passive: true })
-    handleScroll()
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-    }
-  }, [delay, isVisible])
+  const isVisible = useScrollDetection(containerRef, {
+    delay,
+    offsetTop: 0,
+    offsetBottom: -200,
+    triggerPoint: null
+  })
 
   useEffect(() => {
     if (!textRef.current || !isVisible) return

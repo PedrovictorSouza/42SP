@@ -1,8 +1,8 @@
 .footer {
-  position: absolute;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   max-width: 100vw;
-  padding: 1.5rem;
+  padding: 10vh 3% 4rem 3%;
   z-index: 10000;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -11,6 +11,9 @@
   opacity: 0;
   box-sizing: border-box;
   overflow: hidden;
+  transition: opacity 1.4s ease;
+  background-color: #000;
+  margin-top: auto;
 }
 
 .footer > * {

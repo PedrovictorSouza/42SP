@@ -21,14 +21,14 @@
   text-align: left;
 }
 
-.manifesto-cta-text {
+.manifesto-section-content .manifesto-cta-text {
   font-weight: 600;
-  margin-top: 32px !important;
+  margin-top: 32px;
 }
 
-.manifesto-closing-text {
+.manifesto-section-content .manifesto-closing-text {
   font-style: italic;
-  margin-top: 16px !important;
+  margin-top: 16px;
 }
 
 @media (max-width: 768px) {

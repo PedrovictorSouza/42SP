@@ -72,3 +72,4 @@ function DiagnosticoContent() {
 
 export default DiagnosticoContent
 
+

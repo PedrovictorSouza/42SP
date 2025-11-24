@@ -9,6 +9,11 @@
   margin: 0;
   white-space: pre-line;
   min-height: 1em;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
 }
 
 .cascade-text.console-style {

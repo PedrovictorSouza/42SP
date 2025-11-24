@@ -15,7 +15,7 @@ function InteractiveGrid({ itemSize = 320, gap = 32, rows = 6, cols = 8 }) {
               id: `${row}-${col}`,
               x: col * (itemSize + gap),
               y: row * (itemSize + gap),
-              color: 'rgba(255, 98, 0, 0.2)' // Orange color with 20% opacity
+              color: 'rgba(5, 178, 193, 0.2)' // Cyan color with 20% opacity
             })
       }
     }

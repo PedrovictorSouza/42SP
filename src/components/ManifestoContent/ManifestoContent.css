@@ -44,9 +44,9 @@
   margin-bottom: 0;
 }
 
-.manifesto-cta {
+.manifesto-text .manifesto-cta {
   font-weight: 600;
-  margin-top: 32px !important;
+  margin-top: 32px;
 }
 
 .manifesto-button {

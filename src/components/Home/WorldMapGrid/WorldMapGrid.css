@@ -3,7 +3,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100%;
   height: calc(100vw * 35 / 55);
+  max-height: 100vh;
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(55, 1fr);
@@ -11,6 +13,8 @@
   z-index: 0;
   pointer-events: none;
   font-size: clamp(0.4rem, 0.6vw, 0.6rem);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .world-map-cell {
@@ -19,6 +23,7 @@
   min-width: 0.3em;
   min-height: 0.3em;
   opacity: 0.3;
+  aspect-ratio: 1;
 }
 
 .world-map-cell:nth-child(19),
@@ -223,6 +228,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: north-america 12s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -284,6 +290,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: south-america 10s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -376,6 +383,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: europe 10s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -463,6 +471,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: africa 12s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -706,6 +715,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: asia 15s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -752,6 +762,7 @@
   background-color: #222;
   font-size: 0.5em;
   border-radius: 50%;
+  aspect-ratio: 1;
   animation: australia 8s ease-in-out infinite;
   animation-delay: calc(var(--random-delay, 0) * -1ms);
 }
@@ -761,10 +772,10 @@
     background-color: #222;
   }
   30% {
-    background-color: #ffa500;
+    background-color: rgb(5,178,193);
   }
   70% {
-    background-color: #ffa500;
+    background-color: rgb(5,178,193);
   }
   100% {
     background-color: #222;
@@ -776,10 +787,10 @@
     background-color: #222;
   }
   30% {
-    background-color: #ff8c00;
+    background-color: rgb(5,178,193);
   }
   70% {
-    background-color: #ff8c00;
+    background-color: rgb(5,178,193);
   }
   100% {
     background-color: #222;

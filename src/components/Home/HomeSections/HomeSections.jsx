@@ -8,7 +8,7 @@ const sections = [
       {
         id: 'home',
         title: '[ DESENVOLVEMOS SOLUÇÕES DIGITAIS ]',
-        text: 'O Lab42 é uma iniciativa da 42 São Paulo, com apoio da Mastertech. Funciona como um laboratório de inovação aplicada que transforma desafios reais de negócios em soluções digitais desenvolvidas por squads de estudantes da 42SP.',
+        text: '',
         delay: 0,
         headerContent: <ParallaxText />
       },
@@ -40,6 +40,7 @@ const sections = [
     title: '',
     text: '',
     delay: 500,
+    sectionTitle: <>COMO<br />FUNCIONA</>,
     customContent: <Accordion />
   },
   {

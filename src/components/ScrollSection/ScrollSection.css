@@ -37,17 +37,27 @@
   font-weight: 300;
   letter-spacing: 0.02em;
   pointer-events: auto;
-  cursor: pointer;
-  user-select: none;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .scroll-section-text.as {
-  cursor: pointer;
-  user-select: none;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
-.scroll-section-text.as::selection {
-  background: transparent;
+.scroll-section-title {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
 }
 
 .scroll-section-text.visible {

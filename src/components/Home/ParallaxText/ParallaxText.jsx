@@ -25,6 +25,9 @@ function ParallaxText({ labText = 'LAB', developingText = 'DEVELOPING FUTURES' }
       <p ref={developingFuturesRef} className="developing-futures-text">
         DEVELOPING<br />FUTURES
       </p>
+      <p className="lab-description-text">
+        O Lab42 é uma iniciativa da 42 São Paulo, com apoio da Mastertech. Funciona como um laboratório de inovação aplicada que transforma desafios reais de negócios em soluções digitais desenvolvidas por squads de estudantes da 42SP.
+      </p>
       <ParallaxNumbers />
     </div>
   )

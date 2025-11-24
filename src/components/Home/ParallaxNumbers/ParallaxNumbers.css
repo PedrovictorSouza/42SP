@@ -7,8 +7,32 @@
   line-height: 1;
   perspective: 1000px;
   transform-style: preserve-3d;
-  overflow: hidden;
+  overflow: visible;
   box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .numbers-wrapper {
+    width: 50vw;
+    height: 50vw;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .numbers-wrapper {
+    width: 60vw;
+    height: 60vw;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .numbers-wrapper {
+    width: 70vw;
+    height: 70vw;
+    max-width: 100%;
+  }
 }
 
 .number-42 {

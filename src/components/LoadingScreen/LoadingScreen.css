@@ -71,7 +71,7 @@
   position: absolute;
   width: 100px;
   height: 100px;
-  background-color: #ff8c00;
+  background-color: rgb(5,178,193);
   border-radius: 4px;
   top: 50%;
   left: 50%;
@@ -97,7 +97,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #ff8c00;
+  background-color: rgb(5,178,193);
 }
 
 .curtain-stripes {
@@ -106,11 +106,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ff8c00;
+  background-color: rgb(5,178,193);
   background-image: repeating-linear-gradient(
     90deg,
-    #ff8c00,
-    #ff8c00 40px,
+    rgb(5,178,193),
+    rgb(5,178,193) 40px,
     rgba(0, 0, 0, 0.15) 40px,
     rgba(0, 0, 0, 0.15) 80px
   );

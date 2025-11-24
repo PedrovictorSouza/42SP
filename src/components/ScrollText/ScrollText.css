@@ -25,17 +25,19 @@
   font-weight: 300;
   letter-spacing: 0.02em;
   pointer-events: auto;
-  cursor: pointer;
-  user-select: none;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .scroll-text.as {
-  cursor: pointer;
-  user-select: none;
-}
-
-.scroll-text.as::selection {
-  background: transparent;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .scroll-text.visible {

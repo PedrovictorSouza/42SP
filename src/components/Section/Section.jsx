@@ -1,79 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Section.css'
-import { useASCIIShift } from '../ScrollText/useASCIIShift'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
 import ParallaxIgnition from '../Home/ParallaxIgnition/ParallaxIgnition'
 import CascadeText from './CascadeText/CascadeText'
-
-const glitchChars = '.,·-─~+:;=*π""┐┌┘┴┬╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@0123456789*'
+import { useScrollDetection } from '../Home/hooks/useScrollDetection'
 
 function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   const textRef = useRef(null)
-  const autoGlitchIntervalRef = useRef(null)
-
-  useASCIIShift(isVisible ? textRef.current : null, { dur: 1000, spread: 1 })
-
-  useEffect(() => {
-    if (!textRef.current || !isVisible) return
-
-    const triggerAutoGlitch = () => {
-      if (!textRef.current) return
-
-      const element = textRef.current
-      const originalText = element.textContent
-      const chars = originalText.split('')
-      
-      const glitchCount = Math.floor(Math.random() * 5) + 2
-      const glitchPositions = []
-      
-      for (let i = 0; i < glitchCount; i++) {
-        const pos = Math.floor(Math.random() * chars.length)
-        if (chars[pos] !== ' ') {
-          glitchPositions.push(pos)
-        }
-      }
-
-      const glitchDuration = 200 + Math.random() * 300
-      const startTime = Date.now()
-
-      const animate = () => {
-        const elapsed = Date.now() - startTime
-        if (elapsed > glitchDuration) {
-          element.textContent = originalText
-          return
-        }
-
-        const newChars = [...chars]
-        glitchPositions.forEach(pos => {
-          if (newChars[pos] !== ' ') {
-            const charIdx = Math.floor(Math.random() * glitchChars.length)
-            newChars[pos] = glitchChars[charIdx]
-          }
-        })
-        
-        element.textContent = newChars.join('')
-        requestAnimationFrame(animate)
-      }
-
-      requestAnimationFrame(animate)
-    }
-
-    const scheduleNextGlitch = () => {
-      const delay = 3000 + Math.random() * 5000
-      autoGlitchIntervalRef.current = setTimeout(() => {
-        triggerAutoGlitch()
-        scheduleNextGlitch()
-      }, delay)
-    }
-
-    scheduleNextGlitch()
-
-    return () => {
-      if (autoGlitchIntervalRef.current) {
-        clearTimeout(autoGlitchIntervalRef.current)
-      }
-    }
-  }, [isVisible])
 
   return (
     <div className={`section-text-block ${isFirstBlock ? 'first-block' : ''}`}>
@@ -90,52 +23,16 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
 
 function Section({ id, text, secondParagraph, delay = 0, backgroundColor, headerContent, twoColumns = false, firstColumnText, secondColumnText, gridLayout = false, topLeftText, topRightText, bottomRightText, backgroundContent, sectionTitle, consoleStyle = false, customContent }) {
   const containerRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(!headerContent && !sectionTitle && !customContent)
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    let timeoutId = null
-
-    const handleScroll = () => {
-      const rect = container.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-      const elementTop = rect.top
-      const elementBottom = rect.bottom
-      
-      const isInViewport = elementTop < windowHeight + 100 && elementBottom > -100
-      
-      if (isInViewport) {
-        if (!isVisible) {
-          if (timeoutId) clearTimeout(timeoutId)
-          timeoutId = setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
-        }
-      } else if (elementTop > windowHeight * 2) {
-        setIsVisible(false)
-      }
-    }
-
-    if (sectionTitle || customContent) {
-      setTimeout(() => {
-        setIsVisible(true)
-      }, delay)
-    } else {
-      window.addEventListener('scroll', handleScroll, { passive: true })
-      window.addEventListener('resize', handleScroll, { passive: true })
-      handleScroll()
-    }
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-      if (!sectionTitle && !customContent) {
-        window.removeEventListener('scroll', handleScroll)
-        window.removeEventListener('resize', handleScroll)
-      }
-    }
-  }, [delay, isVisible, sectionTitle, customContent])
+  const autoShow = !!(sectionTitle || customContent)
+  const initialVisible = !headerContent && !sectionTitle && !customContent
+  
+  const isVisible = useScrollDetection(containerRef, {
+    delay,
+    offsetTop: 100,
+    offsetBottom: -100,
+    autoShow,
+    dependencies: [sectionTitle, customContent]
+  })
 
   const splitTextIntoBlocks = (textString) => {
     if (!textString) return []
@@ -293,6 +190,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   delay={0}
                   charDelay={0.02}
                   consoleStyle={consoleStyle}
+                  showTimestamps={false}
                 />
               </div>
               <div className="section-text-column">
@@ -302,6 +200,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   delay={0.1}
                   charDelay={0.02}
                   consoleStyle={consoleStyle}
+                  showTimestamps={false}
                 />
               </div>
             </div>

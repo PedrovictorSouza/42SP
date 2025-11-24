@@ -14,7 +14,7 @@ function getTimestamp(baseTime = null, offsetSeconds = 0) {
   return `[${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}]`
 }
 
-function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyle = false }) {
+function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyle = false, showTimestamps = true }) {
   const [displayedText, setDisplayedText] = useState('')
   const timeoutRef = useRef(null)
   const intervalRef = useRef(null)
@@ -46,10 +46,14 @@ function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyl
     if (consoleStyle) {
       const baseTime = new Date()
       const textLines = text.split('\n').filter(line => line.trim().length > 0)
-      lines = textLines.map((line, index) => {
-        const timestamp = getTimestamp(baseTime, index * 2)
-        return `${timestamp} ${line.trim()}`
-      })
+      if (showTimestamps) {
+        lines = textLines.map((line, index) => {
+          const timestamp = getTimestamp(baseTime, index * 2)
+          return `${timestamp} ${line.trim()}`
+        })
+      } else {
+        lines = textLines.map((line) => line.trim())
+      }
       processedText = lines.join('\n')
     }
     
@@ -92,7 +96,7 @@ function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyl
         intervalRef.current = null
       }
     }
-  }, [text, isVisible, delay, charDelay, consoleStyle])
+  }, [text, isVisible, delay, charDelay, consoleStyle, showTimestamps])
 
   if (!text) return null
 
