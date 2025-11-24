@@ -88,7 +88,7 @@ function ScrollSection({ text, title, delay = 0 }) {
         <h2 ref={titleRef} className={`scroll-section-title ${isVisible ? 'visible' : ''}`}>{title}</h2>
       )}
       <div ref={textRef} className={`scroll-section-text ${isVisible ? 'visible' : ''}`}>
-        {text}
+        {typeof text === 'string' ? text : text}
       </div>
     </div>
   )

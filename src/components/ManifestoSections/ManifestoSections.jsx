@@ -1,11 +1,16 @@
 import ScrollSection from '../ScrollSection/ScrollSection'
+import SecretAgentReveal from '../Accordion/SecretAgentReveal'
 
 function ManifestoSections() {
   return (
     <>
       <ScrollSection
         title="[ DISCLAIMER ]"
-        text="Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno. A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos. A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional."
+        text={
+          <SecretAgentReveal>
+            Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno. A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos. A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional.
+          </SecretAgentReveal>
+        }
         delay={0}
       />
       

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import FeedbackMarker from './FeedbackMarker/FeedbackMarker'
+import ScrollProgressBar from './ScrollProgressBar/ScrollProgressBar'
 import { LoadingScreenProvider, useLoadingScreen, LoadingScreen } from './LoadingScreen'
 
 function LayoutContent() {
@@ -42,6 +43,7 @@ function LayoutContent() {
       <LoadingScreen />
       {!isVisible && (
         <>
+          <ScrollProgressBar />
           <Navbar />
           <Outlet />
           <Footer />

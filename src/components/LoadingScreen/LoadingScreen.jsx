@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './LoadingScreen.css'
 import { useLoadingScreen } from './LoadingScreenContext'
+import SecretAgentReveal from '../Accordion/SecretAgentReveal'
 
 const loremIpsum1 = 'Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno. A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos.'
 const loremIpsum2 = 'A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional.'
@@ -33,14 +34,17 @@ function Act1() {
   const totalWords1 = loremIpsum1.split(' ').length
   const totalWords2 = loremIpsum2.split(' ').length
   const totalWords = totalWords1 + totalWords2
-  const wordDelay = 5.0 / totalWords
+  const maxRevealTime = 3.0
+  const wordDelay = maxRevealTime / (totalWords - 1)
   const secondBlockStart = totalWords1 * wordDelay
 
   return (
     <div className="act-1">
       <div className="text-blocks-wrapper">
-        <TextBlock text={loremIpsum1} startDelay={0} wordDelay={wordDelay} />
-        <TextBlock text={loremIpsum2} startDelay={secondBlockStart} wordDelay={wordDelay} />
+        <SecretAgentReveal>
+          <TextBlock text={loremIpsum1} startDelay={0} wordDelay={wordDelay} />
+          <TextBlock text={loremIpsum2} startDelay={secondBlockStart} wordDelay={wordDelay} />
+        </SecretAgentReveal>
       </div>
     </div>
   )

@@ -1,0 +1,42 @@
+.scroll-progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.3;
+}
+
+.scroll-progress-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scroll-progress-path {
+  filter: drop-shadow(0 0 10px rgba(5, 178, 193, 0.5));
+  transition: stroke-dashoffset 0.1s ease-out;
+}
+
+.rocket-container {
+  transition: transform 0.1s ease-out;
+}
+
+.rocket-svg {
+  filter: drop-shadow(0 0 5px rgba(5, 178, 193, 0.8));
+}
+
+.progress-percentage-text {
+  font-size: 7pt;
+  fill: rgb(5, 178, 193);
+  opacity: 0.3;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: x 0.1s ease-out, y 0.1s ease-out;
+}
+

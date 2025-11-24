@@ -1,21 +1,8 @@
 import './PrecoContratoContent.css'
+import { detalhes } from './PrecoContratoContent.data'
 
-const detalhes = [
-  {
-    title: 'Tempo estimado de execução',
-    subtitle: '(em horas de trabalho)'
-  },
-  {
-    title: 'Especificação das entregas',
-    subtitle: 'previstas'
-  },
-  {
-    title: 'Composição do squad',
-    subtitle: ''
-  }
-]
-
-function PrecoContratoContent() {
+function PrecoContratoContent({ detalhes: detalhesProp }) {
+  const detalhesData = detalhesProp || detalhes
   return (
     <div className="preco-contrato-content">
       <h2 className="preco-contrato-title">→ preço e contrato</h2>
@@ -30,7 +17,7 @@ function PrecoContratoContent() {
           </div>
         </div>
         <div className="preco-contrato-details">
-          {detalhes.map((item, index) => (
+          {detalhesData.map((item, index) => (
             <div key={index} className="preco-contrato-detail-box">
               <div className="preco-contrato-detail-title">{item.title}</div>
               {item.subtitle && (
