@@ -23,7 +23,6 @@ function TextBlock({ text, startDelay = 0, wordDelay = 0.05 }) {
           }}
         >
           {word}
-          {index < words.length - 1 && ' '}
         </span>
       ))}
     </div>

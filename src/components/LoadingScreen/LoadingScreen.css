@@ -29,6 +29,9 @@
 
 .text-block {
   flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
   text-align: left;
   color: #ecf0f1;
   font-size: 24px;
