@@ -17,7 +17,7 @@
 
 .zeladoria-panel.left {
   width: 20%;
-  background: #ffffff;
+  background: rgb(5,178,193);
   position: relative;
   display: flex;
   flex-direction: row;
@@ -40,7 +40,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(0.75rem, 1vw, 0.9rem);
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -56,7 +56,7 @@
   font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: clamp(4rem, 10vw, 8rem);
   font-weight: 700;
-  color: #000000;
+  color: #ffffff;
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -73,7 +73,7 @@
   position: absolute;
   left: 1px;
   top: 1px;
-  color: #000000;
+  color: #ffffff;
   opacity: 0.4;
   z-index: -1;
   transform: translate(0.5px, 0.5px);
@@ -84,7 +84,7 @@
   position: absolute;
   left: -1px;
   top: -1px;
-  color: #000000;
+  color: #ffffff;
   opacity: 0.4;
   z-index: -1;
   transform: translate(-0.5px, -0.5px);
@@ -92,7 +92,7 @@
 
 .zeladoria-panel.right {
   width: 80%;
-  background: #ffffff;
+  background: rgb(5,178,193);
   display: flex;
   flex-direction: column;
   padding: 4rem 3rem;
@@ -119,7 +119,7 @@
 
 .zeladoria-arrow {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
-  color: #000000;
+  color: #ffffff;
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
@@ -128,7 +128,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.1rem, 1.8vw, 1.4rem);
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   line-height: 1.4;
 }
 
@@ -136,7 +136,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   line-height: 1.6;
   margin: 0;
   padding-left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1rem);
@@ -148,8 +148,8 @@
   gap: 2rem;
   margin-top: 1rem;
   padding-left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1rem);
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
@@ -164,7 +164,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -173,7 +173,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(0.9rem, 1.3vw, 1.1rem);
   font-weight: 400;
-  color: #000000;
+  color: #ffffff;
   line-height: 1.6;
 }
 
