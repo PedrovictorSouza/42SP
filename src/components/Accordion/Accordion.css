@@ -3,7 +3,7 @@
   opacity: 0;
   transition: opacity 0.8s ease;
   background: rgba(0, 0, 0, 1);
-  padding: 3rem 3%;
+  padding: 3rem 0;
   border-radius: 0;
 }
 
@@ -96,13 +96,13 @@
 
 @media (max-width: 1024px) {
   .accordion-container {
-    padding: 3rem 5%;
+    padding: 3rem 0;
   }
 }
 
 @media (max-width: 768px) {
   .accordion-container {
-    padding: 3rem 5%;
+    padding: 3rem 0;
   }
   
   .accordion-item {
@@ -125,7 +125,7 @@
 
 @media (max-width: 480px) {
   .accordion-container {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0;
   }
 }
 

@@ -18,6 +18,7 @@ const sections = [
     title: '[ DISCLAIMER ]',
     text: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares. Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso. As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.',
     delay: 200,
+    backgroundColor: '#000000',
     gridLayout: true,
     consoleStyle: true,
     topLeftText: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares.',

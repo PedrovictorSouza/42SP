@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import './Section.css'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
-import ParallaxIgnition from '../Home/ParallaxIgnition/ParallaxIgnition'
 import CascadeText from './CascadeText/CascadeText'
 import { useScrollDetection } from '../Home/hooks/useScrollDetection'
 
@@ -120,6 +119,9 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
             </div>
           ) : gridLayout ? (
             <div className="section-grid-2x2">
+              <div className="section-grid-cell section-full-column">
+                <h1 className="section-title">IGNI<br />TION</h1>
+              </div>
               <div className="section-grid-cell">
                 {consoleStyle ? (
                   <CascadeText 
@@ -155,9 +157,6 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                     {topRightText || ''}
                   </div>
                 )}
-              </div>
-              <div className="section-grid-cell section-full-column">
-                <ParallaxIgnition />
               </div>
               <div className="section-grid-cell section-image-placeholder">
                 <img src={jellyfishImage} alt="" className="section-grid-image" />
