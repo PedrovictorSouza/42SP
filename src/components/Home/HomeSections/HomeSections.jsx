@@ -3,6 +3,7 @@ import ParallaxText from '../ParallaxText/ParallaxText'
 import WorldMapGrid from '../WorldMapGrid/WorldMapGrid'
 import Accordion from '../../Accordion/Accordion'
 import LifelongImpact from '../../LifelongImpact/LifelongImpact'
+import Zeladoria from '../../Zeladoria/Zeladoria'
 
 const sections = [
       {
@@ -48,6 +49,12 @@ const sections = [
     text: '',
     delay: 1200,
     customContent: <LifelongImpact />
+  },
+  {
+    title: '',
+    text: '',
+    delay: 1400,
+    customContent: <Zeladoria />
   }
 ]
 

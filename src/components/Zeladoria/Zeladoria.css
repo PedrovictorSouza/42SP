@@ -1,0 +1,241 @@
+.zeladoria {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.zeladoria.visible {
+  opacity: 1;
+}
+
+.zeladoria-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.zeladoria-panel.left {
+  width: 20%;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 4rem 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.zeladoria-governanca {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.zeladoria-governanca span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.zeladoria-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.zeladoria-title-line {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  color: #000000;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  position: relative;
+  transform: translate(0, 0);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
+}
+
+.zeladoria-title-line::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  color: #000000;
+  opacity: 0.4;
+  z-index: -1;
+  transform: translate(0.5px, 0.5px);
+}
+
+.zeladoria-title-line::after {
+  content: attr(data-text);
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  color: #000000;
+  opacity: 0.4;
+  z-index: -1;
+  transform: translate(-0.5px, -0.5px);
+}
+
+.zeladoria-panel.right {
+  width: 80%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 3rem;
+  position: relative;
+}
+
+.zeladoria-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.zeladoria-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.zeladoria-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.zeladoria-arrow {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #000000;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.zeladoria-header-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.4;
+}
+
+.zeladoria-section-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1rem);
+}
+
+.zeladoria-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1rem);
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.zeladoria-table-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.zeladoria-table-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.zeladoria-table-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .zeladoria {
+    flex-direction: column;
+  }
+
+  .zeladoria-panel.left {
+    width: 100%;
+    padding: 3rem 2rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .zeladoria-governanca {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  .zeladoria-panel.right {
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
+  .zeladoria-table {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .zeladoria-panel.left {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zeladoria-governanca {
+    margin-bottom: 2rem;
+  }
+
+  .zeladoria-panel.right {
+    padding: 2rem 1.5rem;
+  }
+
+  .zeladoria-title-line {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .zeladoria-content {
+    gap: 2rem;
+  }
+
+  .zeladoria-section-text {
+    padding-left: 0;
+  }
+
+  .zeladoria-table {
+    padding-left: 0;
+  }
+}
+
