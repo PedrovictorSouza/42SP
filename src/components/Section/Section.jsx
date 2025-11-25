@@ -3,6 +3,7 @@ import './Section.css'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
 import CascadeText from './CascadeText/CascadeText'
 import { useScrollDetection } from '../Home/hooks/useScrollDetection'
+import AnimatedTextBackground from './AnimatedTextBackground'
 
 function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   const textRef = useRef(null)
@@ -69,6 +70,14 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
           {backgroundContent}
         </div>
       )}
+      {id === 'disclaimer' && gridLayout && (
+        <>
+          <div className="section-background-content disclaimer-background-image">
+            <img src={jellyfishImage} alt="" className="disclaimer-jellyfish-bg" />
+          </div>
+          <AnimatedTextBackground text="ignition" opacity={0.3} />
+        </>
+      )}
       {headerContent && (
         <div className="section-header">
           {headerContent}
@@ -99,6 +108,8 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                     delay={0}
                     charDelay={0.02}
                     consoleStyle={true}
+                    showTimestamps={false}
+                    applyZeladoriaStyles={id === 'disclaimer'}
                   />
                 ) : (
                   <div 
@@ -117,6 +128,8 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                     delay={0.1}
                     charDelay={0.02}
                     consoleStyle={true}
+                    showTimestamps={false}
+                    applyZeladoriaStyles={id === 'disclaimer'}
                   />
                 ) : (
                   <div 
@@ -127,9 +140,6 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   </div>
                 )}
               </div>
-              <div className="section-grid-cell section-image-placeholder">
-                <img src={jellyfishImage} alt="" className="section-grid-image" />
-              </div>
               <div className="section-grid-cell">
                 {consoleStyle ? (
                   <CascadeText 
@@ -138,6 +148,8 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                     delay={0.2}
                     charDelay={0.02}
                     consoleStyle={true}
+                    showTimestamps={false}
+                    applyZeladoriaStyles={id === 'disclaimer'}
                   />
                 ) : (
                   <div 

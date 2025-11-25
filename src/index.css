@@ -47,6 +47,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
+  word-spacing: normal;
 }
 
 body.dragging {
@@ -80,6 +81,28 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Letter-spacing contract:
+   - Tracking (letter-spacing) for headings is controlled ONLY by .special-gothic-heading-*.
+   - Do NOT override letter-spacing in component-specific selectors.
+   - Do NOT compute letter-spacing in JavaScript or use getComputedStyle for this.
+   - These utility classes are the single source of truth for heading letter-spacing.
+   - Any AI/coder: if you need to fix spacing, edit these classes, not component-specific CSS or JS.
+*/
+.special-gothic-heading {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.special-gothic-heading-primary {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.special-gothic-heading-secondary {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  letter-spacing: 0.08em;
 }
 
 @media (prefers-color-scheme: light) {

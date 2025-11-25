@@ -1,4 +1,5 @@
 import './Zeladoria.css'
+import CascadeText from '../Section/CascadeText/CascadeText'
 
 const supervisionContent = {
   header: 'O Lab42 é supervisionado por um time de governança',
@@ -53,21 +54,49 @@ function Zeladoria({ isVisible = true }) {
           <div className="zeladoria-section">
             <div className="zeladoria-section-header">
               <span className="zeladoria-arrow">→</span>
-              <span className="zeladoria-header-text">{supervisionContent.header}</span>
+              <CascadeText 
+                text={supervisionContent.header}
+                isVisible={isVisible}
+                delay={0}
+                charDelay={0.02}
+                consoleStyle={true}
+                showTimestamps={false}
+              />
             </div>
-            <p className="zeladoria-section-text">{supervisionContent.text}</p>
+            <CascadeText 
+              text={supervisionContent.text}
+              isVisible={isVisible}
+              delay={0.1}
+              charDelay={0.02}
+              consoleStyle={true}
+              showTimestamps={false}
+            />
           </div>
 
           <div className="zeladoria-section">
             <div className="zeladoria-section-header">
               <span className="zeladoria-arrow">→</span>
-              <span className="zeladoria-header-text">O conselho atua em 3 frentes</span>
+              <CascadeText 
+                text="O conselho atua em 3 frentes"
+                isVisible={isVisible}
+                delay={0.2}
+                charDelay={0.02}
+                consoleStyle={true}
+                showTimestamps={false}
+              />
             </div>
             <div className="zeladoria-table">
               {councilFrentes.map((frente, index) => (
                 <div key={index} className="zeladoria-table-cell">
                   <div className="zeladoria-table-title">{frente.title}</div>
-                  <div className="zeladoria-table-text">{frente.text}</div>
+                  <CascadeText 
+                    text={frente.text}
+                    isVisible={isVisible}
+                    delay={0.3 + index * 0.1}
+                    charDelay={0.02}
+                    consoleStyle={true}
+                    showTimestamps={false}
+                  />
                 </div>
               ))}
             </div>
@@ -76,13 +105,27 @@ function Zeladoria({ isVisible = true }) {
           <div className="zeladoria-section">
             <div className="zeladoria-section-header">
               <span className="zeladoria-arrow">→</span>
-              <span className="zeladoria-header-text">Princípios das decisões:</span>
+              <CascadeText 
+                text="Princípios das decisões:"
+                isVisible={isVisible}
+                delay={0.6}
+                charDelay={0.02}
+                consoleStyle={true}
+                showTimestamps={false}
+              />
             </div>
             <div className="zeladoria-table">
               {principios.map((principio, index) => (
                 <div key={index} className="zeladoria-table-cell">
                   <div className="zeladoria-table-title">{principio.title}</div>
-                  <div className="zeladoria-table-text">{principio.text}</div>
+                  <CascadeText 
+                    text={principio.text}
+                    isVisible={isVisible}
+                    delay={0.7 + index * 0.1}
+                    charDelay={0.02}
+                    consoleStyle={true}
+                    showTimestamps={false}
+                  />
                 </div>
               ))}
             </div>

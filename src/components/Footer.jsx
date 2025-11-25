@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import './Footer.css'
+import logoImage from '../assets/logo.png'
 
 function Footer() {
   const location = useLocation()
@@ -27,10 +28,7 @@ function Footer() {
     <footer className="footer">
       <div className="nav-section">
         <div className="logo-container">
-          <div className="logo-circles">
-            <div className="circle circle-1"></div>
-            <div className="circle circle-2"></div>
-          </div>
+          <img src={logoImage} alt="Lab42 Logo" className="logo-image" />
         </div>
       </div>
       <div className="values-section">

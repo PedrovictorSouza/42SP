@@ -11,6 +11,7 @@
   pointer-events: auto;
   background: transparent;
   padding-left: 15%;
+  box-sizing: border-box;
 }
 
 .scroll-text {
@@ -23,7 +24,7 @@
   opacity: 0;
   transition: opacity 0.8s ease;
   font-weight: 300;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
   pointer-events: auto;
   cursor: text;
   user-select: text;
@@ -45,13 +46,28 @@
 }
 
 
+@media (max-width: 1024px) {
+  .scroll-text-container {
+    padding-left: 10%;
+  }
+}
+
 @media (max-width: 768px) {
   .scroll-text-container {
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
+    padding-left: 1.5rem;
   }
   
   .scroll-text {
     font-size: clamp(1rem, 4vw, 1.5rem);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-text-container {
+    padding: 1.5rem 1rem;
+    padding-left: 1rem;
   }
 }
 

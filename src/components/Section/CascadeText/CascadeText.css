@@ -5,7 +5,7 @@
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
   margin: 0;
   white-space: pre-line;
   min-height: 1em;
@@ -14,12 +14,28 @@
   -moz-user-select: text;
   -ms-user-select: text;
   cursor: text;
+  word-spacing: normal;
 }
 
 .cascade-text.console-style {
-  font-family: 'Courier New', Courier, monospace;
-  color: #bfe9b6;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
   line-height: 1.6;
-  font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+  margin: 0;
+  letter-spacing: 0.05em;
+  color: #bfe9b6;
+}
+
+#plano-de-voo .cascade-text.console-style {
+  color: #ffffff;
+}
+
+.zeladoria .cascade-text.console-style {
+  color: white;
+}
+
+.lifelong-impact .cascade-text.console-style {
+  color: white;
 }
 

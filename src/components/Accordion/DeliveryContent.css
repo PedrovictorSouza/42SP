@@ -43,15 +43,6 @@
   padding-left: 1.5rem;
 }
 
-.delivery-text-wrapper::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255, 255, 255, 1);
-}
 
 .delivery-text {
   font-family: 'Space Grotesk', sans-serif;
@@ -59,6 +50,7 @@
   font-weight: 300;
   color: rgba(255, 255, 255, 1);
   line-height: 1.8;
+  word-spacing: normal;
 }
 
 @media (max-width: 768px) {

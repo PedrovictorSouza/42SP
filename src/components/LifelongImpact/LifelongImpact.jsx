@@ -1,5 +1,6 @@
 import './LifelongImpact.css'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
+import CascadeText from '../Section/CascadeText/CascadeText'
 
 const impactItems = [
   {
@@ -32,10 +33,17 @@ function LifelongImpact({ isVisible = true }) {
             <span className="lifelong-impact-title-line">SEMPRE</span>
           </div>
           <div className="lifelong-impact-items">
-            {impactItems.map((item) => (
+            {impactItems.map((item, index) => (
               <div key={item.id} className="lifelong-impact-item">
                 <span className="lifelong-impact-arrow">→</span>
-                <span className="lifelong-impact-text">{item.text}</span>
+                <CascadeText 
+                  text={item.text}
+                  isVisible={isVisible}
+                  delay={index * 0.1}
+                  charDelay={0.02}
+                  consoleStyle={true}
+                  showTimestamps={false}
+                />
               </div>
             ))}
           </div>

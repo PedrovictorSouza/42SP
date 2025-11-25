@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './Navbar.css'
+import logoImage from '../assets/logo.png'
 import { useWindowResize } from './Home/hooks/useWindowResize'
 
 function Navbar() {
@@ -197,10 +198,7 @@ function Navbar() {
     >
       <div className="nav-section">
         <div className="logo-container">
-          <div className="logo-circles">
-            <div className="circle circle-1"></div>
-            <div className="circle circle-2"></div>
-          </div>
+          <img src={logoImage} alt="Lab42 Logo" className="logo-image" />
         </div>
       </div>
       
@@ -220,10 +218,9 @@ function Navbar() {
       <div className={`values-section ${shouldShowHamburger ? 'hidden' : ''}`}>
         <h3>+Menu</h3>
         <ul>
-          <li><a href="#home" onClick={(e) => handleAnchorClick(e, 'home')}>Home</a></li>
-          <li><a href="#disclaimer" onClick={(e) => handleAnchorClick(e, 'disclaimer')}>Disclaimer</a></li>
-          <li><a href="#plano-de-voo" onClick={(e) => handleAnchorClick(e, 'plano-de-voo')}>Plano de Voo</a></li>
-          <li><a href="#processo" onClick={(e) => handleAnchorClick(e, 'processo')}>Processo</a></li>
+          <li><a href="#disclaimer" onClick={(e) => handleAnchorClick(e, 'disclaimer')}>DISCLAIMER</a></li>
+          <li><a href="#plano-de-voo" onClick={(e) => handleAnchorClick(e, 'plano-de-voo')}>PLANO DE VÔO</a></li>
+          <li><a href="#processo" onClick={(e) => handleAnchorClick(e, 'processo')}>COMO FUNCIONA</a></li>
         </ul>
       </div>
       <div className={`location-section ${shouldShowHamburger ? 'hidden' : ''}`}>
@@ -249,10 +246,10 @@ function Navbar() {
           <div className="mobile-menu-section">
             <h3>+Menu</h3>
             <ul>
-              <li><a href="#home" onClick={(e) => handleAnchorClick(e, 'home')}>Home</a></li>
-              <li><a href="#disclaimer" onClick={(e) => handleAnchorClick(e, 'disclaimer')}>Disclaimer</a></li>
-              <li><a href="#plano-de-voo" onClick={(e) => handleAnchorClick(e, 'plano-de-voo')}>Plano de Voo</a></li>
-              <li><a href="#processo" onClick={(e) => handleAnchorClick(e, 'processo')}>Processo</a></li>
+              <li><a href="#home" onClick={(e) => handleAnchorClick(e, 'home')}>DESENVOLVEMOS SOLUÇÕES DIGITAIS</a></li>
+              <li><a href="#disclaimer" onClick={(e) => handleAnchorClick(e, 'disclaimer')}>DISCLAIMER</a></li>
+              <li><a href="#plano-de-voo" onClick={(e) => handleAnchorClick(e, 'plano-de-voo')}>PLANO DE VÔO</a></li>
+              <li><a href="#processo" onClick={(e) => handleAnchorClick(e, 'processo')}>COMO FUNCIONA</a></li>
             </ul>
           </div>
           <div className="mobile-menu-section">

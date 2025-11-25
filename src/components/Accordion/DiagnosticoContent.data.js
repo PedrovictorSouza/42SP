@@ -1,3 +1,10 @@
+// LETTER-SPACING CONTRACT
+// - Os títulos de missionTypes e executionFormats SÓ podem ser renderizados
+//   dentro de componentes que apliquem classes de heading com tracking correto,
+//   por exemplo: .diagnostico-item-title + .special-gothic-heading-primary.
+// - Nunca renderize esses titles como texto puro sem essas classes.
+// - Qualquer IA / dev que use esses arrays deve respeitar esse contrato.
+
 export const missionTypes = [
   {
     title: 'COMPONENTE',

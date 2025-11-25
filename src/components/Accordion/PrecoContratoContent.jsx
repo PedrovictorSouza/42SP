@@ -5,7 +5,7 @@ function PrecoContratoContent({ detalhes: detalhesProp }) {
   const detalhesData = detalhesProp || detalhes
   return (
     <div className="preco-contrato-content">
-      <h2 className="preco-contrato-title">→ preço e contrato</h2>
+      <h2 className="preco-contrato-title special-gothic-heading-primary">→ preço e contrato</h2>
       <div className="preco-contrato-sections">
         <div className="preco-contrato-text-section">
           <div className="preco-contrato-text">
@@ -19,7 +19,7 @@ function PrecoContratoContent({ detalhes: detalhesProp }) {
         <div className="preco-contrato-details">
           {detalhesData.map((item, index) => (
             <div key={index} className="preco-contrato-detail-box">
-              <div className="preco-contrato-detail-title">{item.title}</div>
+              <div className="preco-contrato-detail-title special-gothic-heading-primary">{item.title}</div>
               {item.subtitle && (
                 <div className="preco-contrato-detail-subtitle">{item.subtitle}</div>
               )}

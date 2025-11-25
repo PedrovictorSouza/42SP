@@ -7,14 +7,31 @@
   height: calc(100vw * 35 / 55);
   max-height: 100vh;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(55, 1fr);
-  grid-template-rows: repeat(35, 1fr);
   z-index: 0;
   pointer-events: none;
   font-size: clamp(0.4rem, 0.6vw, 0.6rem);
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.world-map-scroll-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.world-map-grid {
+  display: grid;
+  grid-template-columns: repeat(55, 1fr);
+  grid-template-rows: repeat(35, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.world-map-grid-duplicate {
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 .world-map-cell {
@@ -854,6 +871,27 @@
   }
   100% {
     background-color: #222;
+  }
+}
+
+.world-map-scroll-wrapper {
+  animation: world-map-scroll 60s linear infinite;
+}
+
+.world-map-grid {
+  height: calc(100vw * 35 / 55);
+}
+
+.world-map-grid-duplicate {
+  top: 0;
+}
+
+@keyframes world-map-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
   }
 }
 

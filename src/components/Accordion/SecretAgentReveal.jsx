@@ -9,21 +9,16 @@ function wrapTextInSpans(node) {
     
     for (let i = 0; i < text.length; i++) {
       const char = text[i]
-      if (char.trim() || char === ' ') {
-        const span = document.createElement('span')
-        span.className = 'secret-char'
-        span.setAttribute('data-char-index', charIndex)
-        span.textContent = char
-        fragment.appendChild(span)
-        charIndex++
+      const span = document.createElement('span')
+      span.className = 'secret-char'
+      span.setAttribute('data-char-index', charIndex)
+      if (char === ' ') {
+        span.innerHTML = '\u00A0'
       } else {
-        const span = document.createElement('span')
-        span.className = 'secret-char'
-        span.setAttribute('data-char-index', charIndex)
         span.textContent = char
-        fragment.appendChild(span)
-        charIndex++
       }
+      fragment.appendChild(span)
+      charIndex++
     }
     
     return fragment
@@ -88,6 +83,11 @@ function SecretAgentReveal({ children }) {
         const chars = contentRef.current.querySelectorAll('.secret-char')
         setTotalChars(chars.length)
         
+        // IMPORTANT: Letter-spacing invariants
+        // - Letter-spacing for headings is defined ONLY in CSS (.special-gothic-heading-*).
+        // - Do NOT compute letter-spacing in JS or call getComputedStyle for this.
+        // - Do NOT set style.letterSpacing here.
+        // Any AI/coder: if you need to fix spacing, edit the CSS utilities, not this file.
         chars.forEach((char, index) => {
           char.style.setProperty('--char-index', index)
         })

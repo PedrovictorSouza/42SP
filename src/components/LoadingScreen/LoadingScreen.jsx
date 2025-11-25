@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import './LoadingScreen.css'
 import { useLoadingScreen } from './LoadingScreenContext'
 import SecretAgentReveal from '../Accordion/SecretAgentReveal'
+import { LOADING_SCREEN_EVENTS, dispatchLoadingScreenEvent } from './LoadingScreenEvents'
 
-const loremIpsum1 = 'Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno. A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos.'
+const loremIpsum1 = 'O Lab42 é uma iniciativa da 42 SãoPaulo,com apoio da Mastertech. Funciona como um laboratório de inovação aplicada que transforma desafios reais de negócios em soluções digitais desenvolvidas por squads de estudantes da 42SP.'
 const loremIpsum2 = 'A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional.'
 
-const ACT_1_DURATION = 5.0
+const ACT_1_DURATION = 8.0
 const ACT_2_DURATION = 0.5
-const ACT_3_DURATION = 0.8
 
 function TextBlock({ text, startDelay = 0, wordDelay = 0.05 }) {
   const words = text.split(' ').filter(word => word.length > 0)
@@ -38,6 +38,20 @@ function Act1() {
   const wordDelay = maxRevealTime / (totalWords - 1)
   const secondBlockStart = totalWords1 * wordDelay
 
+  useEffect(() => {
+    const textRevealCompleteTime = (totalWords * wordDelay + secondBlockStart) * 1000
+    const textRevealTimer = setTimeout(() => {
+      dispatchLoadingScreenEvent(LOADING_SCREEN_EVENTS.TEXT_REVEAL_COMPLETE, {
+        totalWords,
+        revealTime: textRevealCompleteTime
+      })
+    }, textRevealCompleteTime)
+
+    return () => {
+      clearTimeout(textRevealTimer)
+    }
+  }, [totalWords, wordDelay, secondBlockStart])
+
   return (
     <div className="act-1">
       <div className="text-blocks-wrapper">
@@ -58,37 +72,38 @@ function Act2() {
   )
 }
 
-function Act3() {
-  return (
-    <div className="act-3">
-      <div className="curtain-stripes"></div>
-    </div>
-  )
-}
-
 function LoadingScreen() {
   const { isVisible, hide } = useLoadingScreen()
   const [currentAct, setCurrentAct] = useState(1)
+  const [showLoadingIndicator, setShowLoadingIndicator] = useState(true)
 
   useEffect(() => {
     if (!isVisible) return
 
-    const act1Timer = setTimeout(() => {
+    const handleAct1Complete = () => {
+      setShowLoadingIndicator(false)
       setCurrentAct(2)
-    }, ACT_1_DURATION * 1000)
+      dispatchLoadingScreenEvent(LOADING_SCREEN_EVENTS.ACT_1_COMPLETE, {
+        duration: ACT_1_DURATION
+      })
+    }
 
-    const act2Timer = setTimeout(() => {
-      setCurrentAct(3)
-    }, (ACT_1_DURATION + ACT_2_DURATION) * 1000)
-
-    const act3Timer = setTimeout(() => {
+    const handleAct2Complete = () => {
       hide()
-    }, (ACT_1_DURATION + ACT_2_DURATION + ACT_3_DURATION) * 1000)
+      dispatchLoadingScreenEvent(LOADING_SCREEN_EVENTS.ACT_2_COMPLETE, {
+        duration: ACT_2_DURATION
+      })
+      dispatchLoadingScreenEvent(LOADING_SCREEN_EVENTS.LOADING_COMPLETE, {
+        totalDuration: ACT_1_DURATION + ACT_2_DURATION
+      })
+    }
+
+    const act1Timer = setTimeout(handleAct1Complete, ACT_1_DURATION * 1000)
+    const act2Timer = setTimeout(handleAct2Complete, (ACT_1_DURATION + ACT_2_DURATION) * 1000)
 
     return () => {
       clearTimeout(act1Timer)
       clearTimeout(act2Timer)
-      clearTimeout(act3Timer)
     }
   }, [isVisible, hide])
 
@@ -96,9 +111,20 @@ function LoadingScreen() {
 
   return (
     <div className="loading-screen-container">
+      {showLoadingIndicator && (
+        <div className="loading-indicator-wrapper">
+          <div className="loading-indicator" />
+          <div className="loading-text">
+            {'carregando...'.split('').map((char, index) => (
+              <span key={index} className="loading-char" style={{ '--char-index': index }}>
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
       {currentAct === 1 && <Act1 />}
       {currentAct === 2 && <Act2 />}
-      {currentAct === 3 && <Act3 />}
     </div>
   )
 }

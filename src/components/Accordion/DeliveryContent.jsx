@@ -5,11 +5,11 @@ function DeliveryContent({ sections: sectionsProp }) {
   const sectionsData = sectionsProp || sections
   return (
     <div className="delivery-content">
-      <h2 className="delivery-title">→ delivery</h2>
+      <h2 className="delivery-title special-gothic-heading-primary">→ delivery</h2>
       <div className="delivery-sections">
         {sectionsData.map((section, index) => (
           <div key={index} className="delivery-section">
-            <h3 className="delivery-section-title">{section.title}</h3>
+            <h3 className="delivery-section-title special-gothic-heading-primary">{section.title}</h3>
             <div className="delivery-text-wrapper">
               <div className="delivery-text">{section.text}</div>
             </div>

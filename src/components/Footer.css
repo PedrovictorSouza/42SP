@@ -150,3 +150,61 @@
   font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
+@media (max-width: 1024px) {
+  .footer {
+    padding: 8vh 5% 3rem 5%;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nav-section {
+    grid-column: 1 / span 3;
+  }
+
+  .values-section {
+    grid-column: 4 / span 3;
+  }
+
+  .location-section {
+    grid-column: 1 / span 3;
+    margin-top: 2rem;
+  }
+
+  .contact-section {
+    grid-column: 4 / span 3;
+    margin-top: 2rem;
+  }
+
+  .social-section {
+    grid-column: 1 / span 6;
+    text-align: left;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 6vh 5% 2rem 5%;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .nav-section,
+  .values-section,
+  .location-section,
+  .contact-section,
+  .social-section {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .social-section {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 5vh 1.5rem 2rem 1.5rem;
+  }
+}
+

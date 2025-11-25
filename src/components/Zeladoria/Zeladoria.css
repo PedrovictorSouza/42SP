@@ -17,7 +17,8 @@
 }
 
 .zeladoria-panel.left {
-  width: 20%;
+  width: fit-content;
+  min-width: 200px;
   background: rgb(5,178,193);
   position: relative;
   display: flex;
@@ -26,13 +27,14 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 2rem;
+  overflow: visible;
 }
 
 .zeladoria-governanca {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  align-self: stretch;
+  align-self: center;
   display: flex;
   align-items: center;
 }
@@ -51,11 +53,13 @@
   flex-direction: column;
   gap: 0;
   flex: 1;
+  min-width: 0;
+  overflow: visible;
 }
 
 .zeladoria-title-line {
   font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(2rem, 8vw, 8rem);
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
@@ -67,6 +71,9 @@
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
   text-rendering: optimizeSpeed;
+  white-space: nowrap;
+  overflow: visible;
+  word-break: keep-all;
 }
 
 .zeladoria-title-line::before {
@@ -114,7 +121,7 @@
 
 .zeladoria-section-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -127,8 +134,8 @@
 
 .zeladoria-header-text {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  font-weight: 400;
+  font-size: 24pt;
+  font-weight: bold;
   color: #ffffff;
   line-height: 1.4;
 }
@@ -141,6 +148,7 @@
   line-height: 1.6;
   margin: 0;
   padding-left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1rem);
+  word-spacing: normal;
 }
 
 .zeladoria-table {
@@ -176,6 +184,7 @@
   font-weight: 400;
   color: #ffffff;
   line-height: 1.6;
+  word-spacing: normal;
 }
 
 @media (max-width: 1024px) {
@@ -185,6 +194,7 @@
 
   .zeladoria-panel.left {
     width: 100%;
+    min-width: auto;
     padding: 3rem 2rem;
     flex-direction: row;
     align-items: flex-start;
@@ -209,10 +219,18 @@
 }
 
 @media (max-width: 768px) {
+  .zeladoria {
+    min-height: auto;
+    overflow-x: hidden;
+  }
+
   .zeladoria-panel.left {
     padding: 2rem 1.5rem;
     flex-direction: column;
     align-items: flex-start;
+    min-width: auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .zeladoria-governanca {
@@ -221,22 +239,40 @@
 
   .zeladoria-panel.right {
     padding: 2rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .zeladoria-title-line {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size: clamp(1.5rem, 8vw, 4rem);
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .zeladoria-content {
     gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .zeladoria-section-text {
     padding-left: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .zeladoria-table {
     padding-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .zeladoria-table-cell {
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 

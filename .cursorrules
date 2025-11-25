@@ -1,0 +1,46 @@
+# Regras de Arquitetura - Letter-Spacing e SecretAgentReveal
+
+Você está editando um projeto React + CSS.
+
+## REGRAS FIXAS DE ARQUITETURA (NÃO DESCUMPRA):
+
+### 1. Letter-spacing NUNCA deve ser controlado em JavaScript.
+   - NÃO usar `getComputedStyle` para pegar `letter-spacing`.
+   - NÃO setar `style.letterSpacing` em nenhum componente.
+   - NÃO criar lógica de `letter-spacing` dentro de `SecretAgentReveal.jsx` nem em hooks como `useParallax`.
+
+### 2. Todo letter-spacing de títulos é controlado SOMENTE por classes utilitárias de CSS:
+   - `.special-gothic-heading-primary`
+   - `.special-gothic-heading-secondary`
+   
+   Se precisar mudar o espaçamento, altere APENAS essas classes ou adicione novas utilitárias de CSS.
+   
+   NÃO crie novas regras de letter-spacing específicas para componentes (por exemplo, nada de
+   `.secret-agent-content .special-gothic-heading-primary .secret-char { letter-spacing: ... }`).
+
+### 3. SecretAgentReveal NÃO pode ter regras próprias de letter-spacing para .secret-char.
+   - Os spans `.secret-char` devem HERDAR o `letter-spacing` do elemento pai.
+   - Se houver problema de espaçamento, ajuste apenas:
+     a) o CSS utilitário das headings, ou
+     b) a forma como SecretAgentReveal envolve o texto, para não quebrar a herança.
+   Mas SEM adicionar letter-spacing novo em `SecretAgentReveal.css` ou `SecretAgentReveal.jsx`.
+
+### 4. Quando for "corrigir" qualquer bug de espaçamento:
+   - Mantenha os invariantes acima.
+   - Se a solução exigir violar qualquer regra acima, NÃO FAÇA e proponha outra abordagem.
+
+**Essas regras são obrigatórias. Todas as mudanças de código devem respeitá-las.**
+
+## Prompt específico para edições no SecretAgentReveal
+
+Quando for editar o componente SecretAgentReveal ou qualquer código relacionado:
+
+- NÃO mexa nas classes utilitárias de letter-spacing globais (`.special-gothic-heading-primary` / `.secondary`).
+- NÃO crie nem altere regras de letter-spacing em `SecretAgentReveal.css`.
+- NÃO use `getComputedStyle`, NÃO leia `letter-spacing` em JS, NÃO set `style.letterSpacing`.
+- Os spans `.secret-char` devem apenas herdar o `letter-spacing` do elemento pai.
+
+Se o problema for que os spans `.secret-char` estão quebrando o espaçamento:
+- Ajuste o markup ou as classes para que a herança funcione.
+- NÃO introduza nenhuma nova lógica baseada em letter-spacing neste componente.
+
