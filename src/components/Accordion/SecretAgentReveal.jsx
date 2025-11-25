@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import './SecretAgentReveal.css'
 
-function wrapTextInSpans(node) {
+function wrapTextInSpans(node, isInDiagnosticoDescription = false) {
   if (node.nodeType === Node.TEXT_NODE) {
     const text = node.textContent
     const fragment = document.createDocumentFragment()
@@ -13,7 +13,12 @@ function wrapTextInSpans(node) {
         span.className = 'secret-char'
         span.setAttribute('data-char-index', charIndex)
       if (char === ' ') {
-        span.innerHTML = '\u00A0'
+        if (isInDiagnosticoDescription) {
+          span.className = 'secret-char secret-char-space'
+          span.innerHTML = ' '
+        } else {
+          span.innerHTML = '\u00A0'
+        }
       } else {
         span.textContent = char
       }
@@ -23,9 +28,11 @@ function wrapTextInSpans(node) {
     
     return fragment
   } else if (node.nodeType === Node.ELEMENT_NODE) {
+    const isDiagnosticoDesc = node.classList?.contains('diagnostico-grid-cell-description') || 
+                              node.closest?.('.diagnostico-grid-cell-description')
     const clone = node.cloneNode(false)
     Array.from(node.childNodes).forEach(child => {
-      const wrapped = wrapTextInSpans(child)
+      const wrapped = wrapTextInSpans(child, isDiagnosticoDesc || isInDiagnosticoDescription)
       if (wrapped) {
         clone.appendChild(wrapped)
       }
@@ -44,10 +51,88 @@ function SecretAgentReveal({ children }) {
   const [totalChars, setTotalChars] = useState(0)
   const [scannerPosition, setScannerPosition] = useState({ left: 0, top: 0, height: 0 })
 
+  const findWordStart = useCallback((chars, currentIndex) => {
+    for (let i = currentIndex; i >= 0; i--) {
+      const char = chars[i]
+      if (char.classList.contains('secret-char-space')) {
+        return i + 1
+      }
+      if (i === 0) {
+        return 0
+      }
+    }
+    return currentIndex
+  }, [])
+
+  const handleWordWrapping = useCallback(() => {
+    if (!contentRef.current || !containerRef.current) return
+    
+    const isInDiagnosticoDesc = containerRef.current.closest('.diagnostico-grid-cell-description')
+    if (!isInDiagnosticoDesc) return
+    
+    const container = isInDiagnosticoDesc
+    const allSpans = Array.from(contentRef.current.querySelectorAll('.secret-char'))
+    if (allSpans.length === 0) return
+    
+    const containerRect = container.getBoundingClientRect()
+    const padding = parseFloat(getComputedStyle(container).paddingRight) || 0
+    const maxRight = containerRect.right - padding
+    
+    const getTopLevelSpans = () => {
+      return Array.from(contentRef.current.children).filter(child => 
+        child.classList.contains('secret-char') && 
+        !child.classList.contains('secret-char-line-break')
+      )
+    }
+    
+    let processedIndices = new Set()
+    let i = 0
+    const topLevelSpans = getTopLevelSpans()
+    
+    while (i < topLevelSpans.length) {
+      if (processedIndices.has(i)) {
+        i++
+        continue
+      }
+      
+      const span = topLevelSpans[i]
+      const spanRect = span.getBoundingClientRect()
+      
+      if (spanRect.right > maxRight && i > 0) {
+        const wordStartIndex = findWordStart(topLevelSpans, i - 1)
+        
+        if (wordStartIndex < i && !processedIndices.has(wordStartIndex)) {
+          const wordStartChar = topLevelSpans[wordStartIndex]
+          
+          if (wordStartChar && !wordStartChar.classList.contains('line-break-inserted')) {
+            const lineBreak = document.createElement('span')
+            lineBreak.className = 'secret-char-line-break'
+            lineBreak.style.display = 'block'
+            lineBreak.style.width = '100%'
+            lineBreak.style.height = '0'
+            lineBreak.setAttribute('data-line-break', 'true')
+            
+            wordStartChar.parentNode.insertBefore(lineBreak, wordStartChar)
+            wordStartChar.classList.add('line-break-inserted')
+            processedIndices.add(wordStartIndex)
+            
+            const updatedSpans = getTopLevelSpans()
+            i = updatedSpans.indexOf(span)
+            if (i === -1) break
+            continue
+          }
+        }
+      }
+      
+      processedIndices.add(i)
+      i++
+    }
+  }, [findWordStart])
+
   const updateScannerPosition = (lastRevealedIndex) => {
     if (!contentRef.current || !containerRef.current || !scannerRef.current) return
     
-    const chars = contentRef.current.querySelectorAll('.secret-char')
+    const chars = contentRef.current.querySelectorAll('.secret-char:not(.secret-char-line-break)')
     if (chars.length === 0) return
     
     const targetChar = chars[Math.min(lastRevealedIndex, chars.length - 1)]
@@ -72,15 +157,16 @@ function SecretAgentReveal({ children }) {
   }
 
   useEffect(() => {
-    if (contentRef.current) {
+    if (contentRef.current && containerRef.current) {
       const originalContent = contentRef.current.cloneNode(true)
-      const wrappedContent = wrapTextInSpans(originalContent)
+      const isInDiagnosticoDesc = containerRef.current.closest('.diagnostico-grid-cell-description')
+      const wrappedContent = wrapTextInSpans(originalContent, !!isInDiagnosticoDesc)
       
       if (wrappedContent) {
         contentRef.current.innerHTML = ''
         contentRef.current.appendChild(wrappedContent)
         
-        const chars = contentRef.current.querySelectorAll('.secret-char')
+        const chars = contentRef.current.querySelectorAll('.secret-char:not(.secret-char-line-break)')
         setTotalChars(chars.length)
         
         // IMPORTANT: Letter-spacing invariants
@@ -91,9 +177,15 @@ function SecretAgentReveal({ children }) {
         chars.forEach((char, index) => {
           char.style.setProperty('--char-index', index)
         })
+        
+        if (isInDiagnosticoDesc) {
+          setTimeout(() => {
+            handleWordWrapping()
+          }, 100)
+        }
       }
     }
-  }, [children])
+  }, [children, handleWordWrapping])
 
   useEffect(() => {
     if (totalChars === 0) return

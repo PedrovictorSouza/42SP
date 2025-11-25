@@ -6,7 +6,7 @@ function ManifestoContent() {
     switch (item.kind) {
       case 'title':
         return <h1 className="manifesto-title">{item.content}</h1>
-
+        
       case 'section-title':
         return <h2 className="manifesto-section-title">{item.content}</h2>
 
@@ -89,7 +89,7 @@ function ManifestoContent() {
         return (
           <div className="governance-item">
             <strong>{item.subtitle}</strong>
-            <p>
+          <p>
               {item.content}
               {item.keywords && item.keywords.length > 0 && (
                 <div className="manifesto-keywords">
