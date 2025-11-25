@@ -9,16 +9,16 @@ function wrapTextInSpans(node) {
     
     for (let i = 0; i < text.length; i++) {
       const char = text[i]
-      const span = document.createElement('span')
-      span.className = 'secret-char'
-      span.setAttribute('data-char-index', charIndex)
+        const span = document.createElement('span')
+        span.className = 'secret-char'
+        span.setAttribute('data-char-index', charIndex)
       if (char === ' ') {
         span.innerHTML = '\u00A0'
       } else {
         span.textContent = char
       }
-      fragment.appendChild(span)
-      charIndex++
+        fragment.appendChild(span)
+        charIndex++
     }
     
     return fragment

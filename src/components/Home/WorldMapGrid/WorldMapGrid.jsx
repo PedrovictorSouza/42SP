@@ -15,13 +15,13 @@ function WorldMapGrid() {
     <div className="world-map-container">
       <div className="world-map-scroll-wrapper">
         <div className="world-map-grid">
-          {cells.map((cell) => (
-            <div
-              key={cell.id}
-              className="world-map-cell"
-              style={{ '--random-delay': cell.delay }}
-            />
-          ))}
+      {cells.map((cell) => (
+        <div
+          key={cell.id}
+          className="world-map-cell"
+          style={{ '--random-delay': cell.delay }}
+        />
+      ))}
         </div>
         <div className="world-map-grid world-map-grid-duplicate">
           {cells.map((cell) => (

@@ -107,8 +107,6 @@
   text-align: left;
 }
 
-.mission-types,
-.execution-formats,
 .governance-items,
 .principles {
   display: flex;
@@ -117,8 +115,6 @@
   margin: 24px 0;
 }
 
-.mission-type-item,
-.format-item,
 .governance-item,
 .principle-item {
   padding: 16px;
@@ -126,8 +122,6 @@
   background-color: #f9f9f9;
 }
 
-.mission-type-item strong,
-.format-item strong,
 .governance-item strong,
 .principle-item strong {
   display: block;
@@ -136,12 +130,52 @@
   color: #000000;
 }
 
-.mission-type-item p,
-.format-item p,
 .governance-item p,
 .principle-item p {
   margin: 0;
   color: #333333;
+}
+
+.manifesto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 20px 0;
+  background-color: #f9f9f9;
+  border-left: 3px solid #000000;
+}
+
+.manifesto-table thead th {
+  padding: 16px;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000000;
+  background-color: #f9f9f9;
+  border: none;
+}
+
+.manifesto-table tbody td {
+  padding: 0 16px 16px 16px;
+  color: #333333;
+  border: none;
+}
+
+.manifesto-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.manifesto-keyword {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #e0e0e0;
+  color: #333333;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .value-distribution {
@@ -189,8 +223,16 @@
     font-size: 1rem;
   }
   
-  .mission-type-item,
-  .format-item,
+  .manifesto-table thead th {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .manifesto-table tbody td {
+    padding: 0 12px 12px 12px;
+    font-size: 0.95rem;
+  }
+
   .governance-item,
   .principle-item {
     padding: 12px;

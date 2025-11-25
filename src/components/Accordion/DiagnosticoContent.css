@@ -49,51 +49,49 @@
   padding: 0;
 }
 
-.diagnostico-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: stretch;
+.diagnostico-grid-table {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  width: 100%;
 }
 
-.diagnostico-item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
-  position: relative;
+.diagnostico-grid-header {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  color: #4CAF50;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  border: 1px solid rgb(5, 178, 193);
 }
 
-.diagnostico-item-title {
+.diagnostico-grid-cell {
+  padding: 1rem;
+  border: 1px solid rgb(5, 178, 193);
+}
+
+.diagnostico-grid-table > .diagnostico-grid-cell:nth-child(4n+3),
+.diagnostico-grid-table > .diagnostico-grid-cell:nth-child(4n+4) {
+  background-color: rgba(5, 178, 193, 0.2);
+}
+
+.diagnostico-grid-cell-title {
   font-family: 'Special Gothic Expanded One', sans-serif;
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   font-weight: 700;
   color: rgba(255, 255, 255, 1);
   text-transform: uppercase;
-  flex-shrink: 0;
-  min-width: 140px;
-  max-width: 140px;
   line-height: 1.3;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  padding-top: 0;
 }
 
-.diagnostico-item-description {
+.diagnostico-grid-cell-description {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 400;
   color: #ffffff;
   line-height: 1.6;
-  margin: 0;
-  flex: 1;
-  padding-top: 0;
   word-spacing: normal;
-}
-
-.execution-formats-section .diagnostico-item {
-  position: relative;
-  padding-left: 0;
 }
 
 @media (max-width: 768px) {
@@ -106,17 +104,22 @@
     padding: 1.5rem;
   }
 
-  .diagnostico-item {
-    flex-direction: column;
+  .diagnostico-grid-table {
+    grid-template-columns: 1fr;
     gap: 0.5rem;
   }
 
-  .diagnostico-item-title {
-    min-width: auto;
+  .diagnostico-grid-header {
+    display: none;
   }
 
-  .execution-formats-section .diagnostico-item {
-    padding-left: 0;
+  .diagnostico-grid-cell-title {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .diagnostico-grid-cell-description {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
   }
 }
 

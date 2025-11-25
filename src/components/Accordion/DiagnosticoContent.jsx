@@ -1,37 +1,61 @@
 import './DiagnosticoContent.css'
 import { missionTypes, executionFormats } from './DiagnosticoContent.data'
 
-function DiagnosticoContent({ missionTypes: missionTypesProp, executionFormats: executionFormatsProp }) {
-  const missionTypesData = missionTypesProp || missionTypes
-  const executionFormatsData = executionFormatsProp || executionFormats
+function DiagnosticoContent() {
   return (
-    <div className="diagnostico-content">
-      <h2 className="diagnostico-title special-gothic-heading-primary">→ diagnóstico</h2>
+    <section className="diagnostico-content">
+      <h2 className="diagnostico-title">diagnóstico</h2>
+
       <div className="diagnostico-sections">
         <div className="diagnostico-section mission-types-section">
-          <h3 className="diagnostico-section-title special-gothic-heading-primary">TIPO DE MISSÃO</h3>
-          <div className="diagnostico-items">
-            {missionTypesData.map((item, index) => (
-              <div key={index} className="diagnostico-item">
-                <div className="diagnostico-item-title special-gothic-heading-primary">{item.title}</div>
-                <div className="diagnostico-item-description">{item.description}</div>
+          <h3 className="diagnostico-section-title">TIPO DE MISSÃO</h3>
+
+          <div className="diagnostico-grid-table">
+            <div className="diagnostico-grid-header">Tipo</div>
+            <div className="diagnostico-grid-header">Descrição</div>
+
+            {missionTypes.map((mission) => [
+              <div
+                key={`${mission.title}-title`}
+                className="diagnostico-grid-cell diagnostico-grid-cell-title"
+              >
+                {mission.title}
+              </div>,
+              <div
+                key={`${mission.title}-description`}
+                className="diagnostico-grid-cell diagnostico-grid-cell-description"
+              >
+                {mission.description}
               </div>
-            ))}
+            ])}
           </div>
         </div>
+
         <div className="diagnostico-section execution-formats-section">
-          <h3 className="diagnostico-section-title special-gothic-heading-primary">FORMATO DE EXECUÇÃO</h3>
-          <div className="diagnostico-items">
-            {executionFormatsData.map((item, index) => (
-              <div key={index} className="diagnostico-item">
-                <div className="diagnostico-item-title special-gothic-heading-primary">{item.title}</div>
-                <div className="diagnostico-item-description">{item.description}</div>
+          <h3 className="diagnostico-section-title">FORMATO DE EXECUÇÃO</h3>
+
+          <div className="diagnostico-grid-table">
+            <div className="diagnostico-grid-header">Formato</div>
+            <div className="diagnostico-grid-header">Descrição</div>
+
+            {executionFormats.map((format) => [
+              <div
+                key={`${format.title}-title`}
+                className="diagnostico-grid-cell diagnostico-grid-cell-title"
+              >
+                {format.title}
+              </div>,
+              <div
+                key={`${format.title}-description`}
+                className="diagnostico-grid-cell diagnostico-grid-cell-description"
+              >
+                {format.description}
               </div>
-            ))}
+            ])}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

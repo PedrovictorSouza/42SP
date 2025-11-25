@@ -8,38 +8,38 @@
 export const missionTypes = [
   {
     title: 'COMPONENTE',
-    description: 'ajustes ou melhorias em partes específicas de um sistema (automações, scripts, testes).'
+    description: 'Ajustes pontuais em partes do sistema (scripts, automações, testes).'
   },
   {
     title: 'INTEGRAÇÃO',
-    description: 'conexão entre sistemas, criação de APIs ou sincronização de bancos de dados.'
+    description: 'Conectar sistemas e dados por meio de APIs e sincronizações.'
   },
   {
     title: 'PRODUTO',
-    description: 'desenvolvimento de soluções funcionais como MVPs, painéis ou microsserviços.'
+    description: 'Criar uma solução funcional completa (MVP, painel ou microsserviço).'
   },
   {
     title: 'INFRA',
-    description: 'criação de pipelines, configuração de deploys e automações.'
+    description: 'Configurar pipelines, deploy e automações de infraestrutura.'
   },
   {
     title: 'PESQUISA',
-    description: 'exploração de novas tecnologias, IA generativa ou linguagens emergentes.'
+    description: 'Explorar novas tecnologias, IA generativa e linguagens emergentes.'
   }
 ]
 
 export const executionFormats = [
   {
     title: 'QUICK WIN',
-    description: '10 a 30 horas, missões curtas executadas por um ou dois alunos.'
+    description: '10–30h · Missão curta executada por 1–2 alunos.'
   },
   {
     title: 'SPRINT STUDIO',
-    description: '2 a 4 semanas, projetos de média complexidade conduzidos por squads de 3 a 5 pessoas.'
+    description: '2–4 semanas · Projeto de média complexidade com squad de 3–5 pessoas.'
   },
   {
     title: 'RESIDENCY',
-    description: '6 a 8 semanas, imersões longas para desafios estruturais ou experimentais.'
+    description: '6–8 semanas · Imersão longa para desafios estruturais ou experimentais.'
   }
 ]
 

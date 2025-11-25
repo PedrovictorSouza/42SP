@@ -72,9 +72,9 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
       )}
       {id === 'disclaimer' && gridLayout && (
         <>
-          <div className="section-background-content disclaimer-background-image">
-            <img src={jellyfishImage} alt="" className="disclaimer-jellyfish-bg" />
-          </div>
+        <div className="section-background-content disclaimer-background-image">
+          <img src={jellyfishImage} alt="" className="disclaimer-jellyfish-bg" />
+        </div>
           <AnimatedTextBackground text="ignition" opacity={0.3} />
         </>
       )}
