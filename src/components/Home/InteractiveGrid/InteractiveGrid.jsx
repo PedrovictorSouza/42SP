@@ -1,5 +1,5 @@
 import { useRef, useMemo } from 'react'
-import { useGridDrag } from '../hooks/useGridDrag'
+import { useGridDrag } from '../../../features/home/hooks/useGridDrag'
 import './InteractiveGrid.css'
 
 function InteractiveGrid({ itemSize = 320, gap = 32, rows = 6, cols = 8 }) {

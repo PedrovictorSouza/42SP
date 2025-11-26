@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import logoImage from '../assets/logo.png'
-import { useWindowResize } from './Home/hooks/useWindowResize'
+import logoImage from '@/assets/logo.png'
+import { useWindowResize } from '@/features/home/hooks/useWindowResize'
 
 function Navbar() {
   const location = useLocation()
@@ -180,21 +180,10 @@ function Navbar() {
   }
 
   const shouldShowHamburger = isMobile || isScrolled
-  const headerStyle = { pointerEvents: 'none' }
-  const hamburgerButtonStyles = {
-    cursor: 'pointer',
-    pointerEvents: 'auto',
-    zIndex: isMenuOpen ? 100002 : 100001
-  }
-  const mobileMenuStyles = { 
-    zIndex: 100000,
-    pointerEvents: isMenuOpen ? 'auto' : 'none'
-  }
 
   return (
     <header 
       className={`header ${shouldShowHamburger ? 'hamburger-mode' : ''} ${isMenuOpen ? 'menu-open' : ''} ${isScrolled ? 'scrolled' : ''}`}
-      style={headerStyle}
     >
       <div className="nav-section">
         <div className="logo-container">
@@ -205,7 +194,6 @@ function Navbar() {
       {shouldShowHamburger && (
         <button 
           className={`hamburger-button ${isOnWhiteBackground ? 'white-bg' : ''}`}
-          style={hamburgerButtonStyles}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -223,7 +211,7 @@ function Navbar() {
         </ul>
       </div>
 
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`} style={mobileMenuStyles}>
+      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           <div className="mobile-menu-section">
             <h3>+Menu</h3>

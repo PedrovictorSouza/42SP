@@ -31,7 +31,7 @@
   flex-direction: column;
   height: 100%;
   min-width: 0;
-  background: transparent !important; /* Garante fundo transparente */
+  background: transparent; /* Garante fundo transparente */
 }
 
 .mission-types-section,
@@ -52,34 +52,14 @@
 
 .diagnostico-grid-table {
   display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 1rem;
-  min-width: auto;
-  width: fit-content;
-  height: fit-content;
-}
-
-.diagnostico-grid-header {
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: clamp(0.72rem, 1.2vw, 0.88rem);
-  font-weight: 700;
-  color: #4CAF50;
-  text-transform: uppercase;
-  padding: 0.75rem;
-  border: 1px solid rgb(5, 178, 193);
-}
-
-.diagnostico-grid-cell {
-  padding: 1.25rem;
-  border: 1px solid rgb(5, 178, 193);
+  grid-template-columns: auto 1fr; /* Coluna do título ajustada ao conteúdo, descrição preenche o resto */
+  gap: 1.5rem 2rem; /* Gap vertical e horizontal */
   min-width: 0;
-  min-height: 3.5rem;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
 }
 
-.diagnostico-grid-table > .diagnostico-grid-cell:nth-child(4n+3),
-.diagnostico-grid-table > .diagnostico-grid-cell:nth-child(4n+4) {
-  background-color: rgba(5, 178, 193, 0.2);
-}
 
 .diagnostico-grid-cell-title {
   font-family: 'Special Gothic Expanded One', sans-serif;
@@ -102,17 +82,11 @@
   word-spacing: normal;
   white-space: normal;
   align-self: center;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
-.diagnostico-grid-table {
-  display: grid;
-  grid-template-columns: auto 1fr; /* Coluna do título ajustada ao conteúdo, descrição preenche o resto */
-  gap: 1.5rem 2rem; /* Gap vertical e horizontal */
-  min-width: auto;
-  width: 100%;
-  height: fit-content;
-  align-items: center;
-}
 
 /* Remove borders and backgrounds to match the cleaner look */
 .diagnostico-grid-header {
@@ -124,7 +98,7 @@
   border: none;
   min-width: 0;
   min-height: auto;
-  background: transparent !important;
+  background: transparent;
 }
 
 .diagnostico-grid-table > .diagnostico-grid-cell:nth-child(4n+3),

@@ -1,0 +1,101 @@
+.scroll-section-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20vh 15% 4rem 15%;
+  z-index: 10001;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.scroll-section-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0 0 2rem 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: auto;
+}
+
+.scroll-section-highlight {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Increased size for prominence */
+  font-weight: 700; /* Increased weight */
+  color: #ffffff; /* Changed to white for better readability/prominence as requested */
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: auto;
+  letter-spacing: 0.02em;
+}
+
+.scroll-section-highlight.visible {
+  opacity: 1;
+}
+
+.scroll-section-text {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.scroll-section-text.as {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.scroll-section-title {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+}
+
+.scroll-section-text.visible {
+  opacity: 1;
+}
+
+.scroll-section-title.visible {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .scroll-section-container {
+    padding: 15vh 10% 2rem 10%;
+  }
+  
+  .scroll-section-text {
+    font-size: clamp(0.85rem, 3vw, 1.2rem);
+  }
+  
+  .scroll-section-title {
+    font-size: clamp(0.9rem, 3vw, 1.5rem);
+  }
+}
+

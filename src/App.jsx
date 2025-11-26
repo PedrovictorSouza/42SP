@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Layout from './components/Layout'
-import Home from './components/Home'
-import Badges from './components/Badges'
-import Missions from './components/Missions'
-import ModuleExplorador from './components/ModuleExplorador'
-import IDE from './components/IDE/IDE'
+import Layout from '@/components/layout/Layout'
+import Home from '@/features/home/Home'
+import Badges from '@/components/ui/Badges'
+import Missions from '@/features/missions/Missions'
+import ModuleExplorador from '@/features/explorador/ModuleExplorador'
+import IDE from '@/features/ide/IDE'
 
 function App() {
   return (

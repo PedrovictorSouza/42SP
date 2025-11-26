@@ -1,0 +1,13 @@
+.manifesto-image-container {
+  width: 100%;
+  margin: 4rem 0;
+  overflow: hidden;
+}
+
+.manifesto-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+

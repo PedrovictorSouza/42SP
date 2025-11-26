@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useParallax } from '../hooks/useParallax'
+import { useParallax } from '../../../features/home/hooks/useParallax'
 import './ParallaxNumbers.css'
 
 function ParallaxNumbers() {

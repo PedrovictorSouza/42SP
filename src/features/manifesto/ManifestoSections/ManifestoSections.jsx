@@ -1,6 +1,7 @@
 import ScrollSection from '../ScrollSection/ScrollSection'
 import SecretAgentReveal from '../Accordion/SecretAgentReveal'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
+import './ManifestoSections.css'
 
 function ManifestoSections() {
   return (
@@ -28,11 +29,11 @@ function ManifestoSections() {
         delay={400}
       />
 
-      <div style={{ width: '100%', margin: '4rem 0', overflow: 'hidden' }}>
+      <div className="manifesto-image-container">
         <img 
           src={jellyfishImage} 
           alt="Jellyfish" 
-          style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} 
+          className="manifesto-image"
         />
       </div>
       

@@ -105,6 +105,11 @@ button:focus-visible {
   letter-spacing: 0.08em;
 }
 
+.special-gothic-heading-hero {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  letter-spacing: 0.02em;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

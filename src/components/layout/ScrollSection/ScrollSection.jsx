@@ -1,23 +1,23 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import './ScrollSection.css'
 import { useASCIIShift } from '../ScrollText/useASCIIShift'
-import './GlitchText.css'
+import { useScrollDetection } from '../Home/hooks/useScrollDetection'
 
 const glitchChars = '.,·-─~+:;=*π""┐┌┘┴┬╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@0123456789*'
 
-function GlitchText({ text }) {
+function ScrollSection({ text, title, highlightText, delay = 0 }) {
+  const containerRef = useRef(null)
   const textRef = useRef(null)
+  const titleRef = useRef(null)
+  const highlightRef = useRef(null)
   const autoGlitchIntervalRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(false)
 
-  useASCIIShift(isVisible ? textRef.current : null, { dur: 1000, spread: 1 })
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [])
+  const isVisible = useScrollDetection(containerRef, {
+    delay,
+    offsetTop: 0,
+    offsetBottom: -200,
+    triggerPoint: null
+  })
 
   useEffect(() => {
     if (!textRef.current || !isVisible) return
@@ -81,15 +81,24 @@ function GlitchText({ text }) {
     }
   }, [isVisible])
 
+  useASCIIShift(isVisible ? textRef.current : null, { dur: 1000, spread: 1 })
+
   return (
-    <p 
-      ref={textRef}
-      className={`glitch-text ${isVisible ? 'visible' : ''}`}
-    >
-      {text}
-    </p>
+    <div ref={containerRef} className="scroll-section-container">
+      {title && (
+        <h2 ref={titleRef} className={`scroll-section-title ${isVisible ? 'visible' : ''}`}>{title}</h2>
+      )}
+      {highlightText && (
+        <h3 ref={highlightRef} className={`scroll-section-highlight ${isVisible ? 'visible' : ''}`}>
+          {highlightText}
+        </h3>
+      )}
+      <div ref={textRef} className={`scroll-section-text ${isVisible ? 'visible' : ''}`}>
+        {typeof text === 'string' ? text : text}
+      </div>
+    </div>
   )
 }
 
-export default GlitchText
+export default ScrollSection
 
