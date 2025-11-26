@@ -110,13 +110,10 @@
 }
 
 .accordion-description {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(0.75rem, 1.2vw, 1rem);
-  font-weight: 300;
+  /* Typography handled by .app-paragraph / .cascade-text.console-style */
   color: rgba(255, 255, 255, 0.7);
   text-align: left;
   max-width: 100%;
-  line-height: 1.6;
   transition: all 0.3s ease;
   flex-shrink: 1;
   justify-self: start;

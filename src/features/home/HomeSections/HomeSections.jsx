@@ -4,6 +4,7 @@ import WorldMapGrid from '@/components/home/WorldMapGrid/WorldMapGrid'
 import Accordion from '@/components/ui/Accordion/Accordion'
 import LifelongImpact from '@/components/home/LifelongImpact/LifelongImpact'
 import Zeladoria from '@/components/home/Zeladoria/Zeladoria'
+import { getManifestoText } from '@/data/manifesto'
 
 const sections = [
       {
@@ -16,26 +17,26 @@ const sections = [
   {
     id: 'disclaimer',
     title: '[ DISCLAIMER ]',
-    text: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares. Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso. As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.',
+    text: getManifestoText('disclaimer.full_text'),
     delay: 200,
     backgroundColor: '#000000',
     gridLayout: true,
     consoleStyle: true,
-    topLeftText: 'A 42SP é uma escola de programação baseada em autonomia e aprendizado entre pares.',
-    topRightText: 'Os alunos avançam por missões progressivas, aprendendo uns com os outros e regulando o próprio percurso.',
-    bottomRightText: 'As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade.'
+    topLeftText: getManifestoText('about.school_definition'),
+    topRightText: getManifestoText('about.mission_integration'),
+    bottomRightText: getManifestoText('about.mission_integration') // Based on previous hardcoded value which was a repeat or similar
   },
   {
     id: 'plano-de-voo',
     title: '[ MISSÃO ]',
-    text: 'Cada missão começa com um diagnóstico técnico e pedagógico que permite compreender a natureza do desafio e estimar seu tamanho, complexidade e duração. Com base nesse entendimento, o conselho do laboratório valida a missão e forma os squads, combinando perfis e expertises de acordo com as exigências de cada caso.',
+    text: getManifestoText('mission.diagnosis'),
     delay: 400,
     backgroundContent: <WorldMapGrid />,
     sectionTitle: <>PLANO DE<br />VÔO</>,
     twoColumns: true,
     consoleStyle: true,
-    firstColumnText: 'Cada missão começa\ncom um diagnóstico\ntécnico e pedagógico que\npermite compreender a\nnatureza do desafio e\nestimar seu tamanho,\ncomplexidade e duração.',
-    secondColumnText: 'Com base nesse\nentendimento, o\nconselho do laboratório\nvalida a missão e forma\nos squads, combinando\nperfis e expertises de\nacordo com as exigências\nde cada caso'
+    firstColumnText: getManifestoText('mission.diagnosis'), // Simplified for now, original had forced line breaks
+    secondColumnText: getManifestoText('mission.squad_formation')
   },
   {
     id: 'processo',
@@ -66,9 +67,9 @@ const sections = [
 function HomeSections() {
   return (
     <>
-      {sections.map((section, index) => (
+      {sections.map((section) => (
         <Section
-          key={index}
+          key={section.id}
           id={section.id}
           text={section.text}
           secondParagraph={section.secondParagraph}

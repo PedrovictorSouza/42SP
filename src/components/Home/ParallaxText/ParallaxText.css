@@ -109,7 +109,6 @@
   font-family: 'Zen Kaku Gothic New', sans-serif; /* Assuming main font */
   color: rgba(255, 255, 255, 0.9);
   font-weight: 400;
-  font-size: clamp(1rem, 1.2vw, 1.2rem);
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -201,7 +200,6 @@
   }
   
   .hero-description {
-    font-size: 1rem;
     max-width: 100%;
   }
 
@@ -249,7 +247,6 @@
   }
   
   .hero-description {
-    font-size: 0.9rem;
   }
 
   .scroll-indicator {
@@ -295,7 +292,6 @@
   }
   
   .hero-description {
-    font-size: 0.85rem;
   }
 
   .scroll-indicator {

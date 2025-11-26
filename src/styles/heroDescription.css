@@ -1,0 +1,16 @@
+/* Global typography utility for hero description */
+.hero-description {
+  font-size: 12pt;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  padding: 0;
+}
+
+/* Modifier for different colors if needed, e.g. in white sections */
+.hero-description--hero {
+  color: rgba(255, 255, 255, 0.9);
+}
+

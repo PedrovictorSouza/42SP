@@ -115,6 +115,18 @@ h1.section-title {
   position: relative;
 }
 
+.section-text-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.section-text-row > * {
+  flex: 1;
+}
+
 .section-text-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -360,6 +372,11 @@ h1.section-title {
   
   .section-text-columns {
     grid-template-columns: 1fr;
+  }
+
+  .section-text-row {
+    flex-direction: column;
+    gap: 1rem;
   }
   
   .section-grid-2x2 {

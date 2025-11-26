@@ -13,9 +13,9 @@ function AccordionItem({ title, description, isExpanded, onClick }) {
         </span>
         <span className="accordion-title-text">{title}</span>
       </div>
-      <div className="accordion-description">
+      <p className="accordion-description cascade-text console-style">
         {description}
-      </div>
+      </p>
     </button>
   )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './CascadeText.css'
-import { useZeladoriaTextStyles } from '../../../home/Zeladoria/useZeladoriaTextStyles'
+import { useZeladoriaTextStyles } from '@/components/home/Zeladoria/useZeladoriaTextStyles'
 
 function getTimestamp(baseTime = null, offsetSeconds = 0) {
   const now = baseTime || new Date()
@@ -15,7 +15,7 @@ function getTimestamp(baseTime = null, offsetSeconds = 0) {
   return `[${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}]`
 }
 
-function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyle = false, showTimestamps = false, applyZeladoriaStyles = false, id, className, tag: Tag = 'p' }) {
+function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyle = false, showTimestamps = false, applyZeladoriaStyles = false, id }) {
   const [displayedText, setDisplayedText] = useState('')
   const timeoutRef = useRef(null)
   const intervalRef = useRef(null)
@@ -105,13 +105,13 @@ function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyl
   const style = zeladoriaStyles ? { ...zeladoriaStyles, paddingLeft: 0 } : {}
 
   return (
-    <Tag 
+    <p 
       id={id}
-      className={`cascade-text ${consoleStyle ? 'console-style' : ''} ${className || ''}`}
+      className={`cascade-text ${consoleStyle ? 'console-style' : ''}`}
       style={style}
     >
       {displayedText}
-    </Tag>
+    </p>
   )
 }
 

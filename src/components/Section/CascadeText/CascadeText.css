@@ -1,9 +1,8 @@
 .cascade-text {
   text-align: left;
   line-height: 1;
-  /* font styles now handled by .app-paragraph via @import or global rule if needed, but keeping here for non-paragraph usage */
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(0.75rem, 1.3vw, 1.05rem);
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -19,16 +18,17 @@
 }
 
 .cascade-text.console-style {
-  /* Use the centralized paragraph style as base */
-  /* Overrides specific to console style */
-  color: #bfe9b6; /* Kept specific color */
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
   letter-spacing: 0.05em;
+  color: #bfe9b6;
 }
 
-/* Regra específica para a classe hero-description */
-.hero-description.cascade-text.console-style {
-  font-weight: bold;
-}
+/* Regra removida para evitar conflito de especificidade com layout novo */
+
 
 #plano-de-voo .cascade-text.console-style {
   color: #ffffff;

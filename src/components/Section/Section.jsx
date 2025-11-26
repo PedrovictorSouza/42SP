@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
 import './Section.css'
-import '@/styles/heroDescription.css'
-import jellyfishImage from '@/assets/Jellyfish-1.png'
+import jellyfishImage from '../../assets/Jellyfish-1.png'
 import CascadeText from './CascadeText/CascadeText'
 import { useScrollDetection } from '@/features/home/hooks/useScrollDetection'
-import AnimatedTextBackground from './AnimatedTextBackground'
+import AnimatedTextBackground from '@/components/layout/Section/AnimatedTextBackground'
 
 function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
   const textRef = useRef(null)
@@ -104,8 +103,8 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
               <div className="section-grid-cell">
                 {consoleStyle ? (
                   <CascadeText 
-                    className="hero-description hero-description-highlight"
                     tag="h3"
+                    className="hero-description"
                     text={topLeftText || ''}
                     isVisible={isVisible}
                     delay={0}
@@ -116,14 +115,14 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   />
                 ) : (
                   <h3 
-                    className={`section-text hero-description hero-description-highlight ${isVisible ? 'visible' : ''}`}
+                    className={`section-text hero-description ${isVisible ? 'visible' : ''}`}
                     style={{ transitionDelay: '0s' }}
                   >
                     {topLeftText || ''}
                   </h3>
                 )}
               </div>
-              <div className="section-grid-cell home-section-top-right">
+              <div className="section-grid-cell">
                 {consoleStyle ? (
                   <CascadeText 
                     text={topRightText || ''}
@@ -167,27 +166,24 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
           ) : twoColumns ? (
             <div className="section-text-columns">
               <div className="section-text-column">
-                {/* Left column left empty for spacing */}
+                <CascadeText 
+                  text={firstColText}
+                  isVisible={isVisible}
+                  delay={0}
+                  charDelay={0.02}
+                  consoleStyle={consoleStyle}
+                  showTimestamps={false}
+                />
               </div>
               <div className="section-text-column">
-                <div className="section-text-row">
-                  <CascadeText 
-                    text={firstColText}
-                    isVisible={isVisible}
-                    delay={0}
-                    charDelay={0.02}
-                    consoleStyle={consoleStyle}
-                    showTimestamps={false}
-                  />
-                  <CascadeText 
-                    text={secondColTextValue}
-                    isVisible={isVisible}
-                    delay={0.1}
-                    charDelay={0.02}
-                    consoleStyle={consoleStyle}
-                    showTimestamps={false}
-                  />
-                </div>
+                <CascadeText 
+                  text={secondColTextValue}
+                  isVisible={isVisible}
+                  delay={0.1}
+                  charDelay={0.02}
+                  consoleStyle={consoleStyle}
+                  showTimestamps={false}
+                />
               </div>
             </div>
           ) : (
@@ -218,3 +214,4 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
 }
 
 export default Section
+

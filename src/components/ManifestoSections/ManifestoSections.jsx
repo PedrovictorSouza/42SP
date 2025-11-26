@@ -1,5 +1,5 @@
-import ScrollSection from '../ScrollSection/ScrollSection'
-import SecretAgentReveal from '../Accordion/SecretAgentReveal'
+import ScrollSection from '../layout/ScrollSection/ScrollSection'
+import SecretAgentReveal from '@/features/secret-agent/SecretAgentReveal'
 import jellyfishImage from '../../assets/Jellyfish-1.png'
 
 function ManifestoSections() {

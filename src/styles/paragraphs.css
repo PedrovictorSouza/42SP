@@ -1,0 +1,22 @@
+/* Centralized typography for app paragraphs */
+.app-paragraph {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 0;
+}
+
+/* Apply to specific components via their classes to enforce consistency */
+.cascade-text.console-style,
+.accordion-description {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.6;
+  margin: 0;
+}
+

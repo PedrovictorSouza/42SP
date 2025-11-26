@@ -3,6 +3,7 @@ import { useParallax } from '@/features/home/hooks/useParallax'
 import ParallaxNumbers from '../ParallaxNumbers/ParallaxNumbers'
 import SecretAgentReveal from '@/features/secret-agent/SecretAgentReveal'
 import './ParallaxText.css'
+import '@/styles/heroDescription.css'
 
 function ParallaxText({ labText = 'LAB' }) {
   const containerRef = useRef(null)
@@ -31,9 +32,9 @@ function ParallaxText({ labText = 'LAB' }) {
           <p ref={developingFuturesRef} className="developing-futures-text">
             DEVELOPING<br />FUTURES
           </p>
-          <p className="hero-description">
+          <h3 className="hero-description">
             O Lab42 é uma iniciativa da 42 São Paulo, com apoio da Mastertech. Funciona como um laboratório de inovação aplicada que transforma desafios reais de negócios em soluções digitais desenvolvidas por squads de estudantes da 42SP.
-          </p>
+          </h3>
         </div>
       </SecretAgentReveal>
       <div className="scroll-indicator">
