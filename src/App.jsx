@@ -4,7 +4,6 @@ import Home from '@/features/home/Home'
 import Badges from '@/components/ui/Badges'
 import Missions from '@/features/missions/Missions'
 import ModuleExplorador from '@/features/explorador/ModuleExplorador'
-import IDE from '@/features/ide/IDE'
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="badges" element={<Badges />} />
           <Route path="missions" element={<Missions />} />
           <Route path="module/explorador" element={<ModuleExplorador />} />
-          <Route path="ide" element={<IDE />} />
         </Route>
       </Routes>
     </BrowserRouter>

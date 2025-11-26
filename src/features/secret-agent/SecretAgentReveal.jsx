@@ -16,15 +16,17 @@ function wrapTextInSpans(node, isInDiagnosticoDescription = false) {
       
       if (part.match(/^\s+$/)) {
         // Whitespace sequence
+        const normalizedWhitespace = part.replace(/\s/g, ' ')
         const spaceSpan = document.createElement('span')
         spaceSpan.className = 'secret-char secret-char-space'
         spaceSpan.setAttribute('data-char-index', charIndex)
+        spaceSpan.style.whiteSpace = 'pre'
         
         // Always use a regular space for layout, but wrap it so it can be revealed/animated
-        spaceSpan.textContent = part
+        spaceSpan.textContent = normalizedWhitespace
         
         fragment.appendChild(spaceSpan)
-        charIndex += part.length
+        charIndex += normalizedWhitespace.length
       } else {
         // Word
         const wordSpan = document.createElement('span')
