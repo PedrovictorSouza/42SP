@@ -19,7 +19,8 @@ function CascadeText({ text, isVisible, delay = 0, charDelay = 0.02, consoleStyl
   const [displayedText, setDisplayedText] = useState('')
   const timeoutRef = useRef(null)
   const intervalRef = useRef(null)
-  const zeladoriaStyles = applyZeladoriaStyles ? useZeladoriaTextStyles() : null
+  const textStyles = useZeladoriaTextStyles()
+  const zeladoriaStyles = applyZeladoriaStyles ? textStyles : null
 
   useEffect(() => {
     if (!text) {

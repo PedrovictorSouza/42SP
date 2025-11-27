@@ -210,14 +210,18 @@ function SecretAgentReveal({ children }) {
   useEffect(() => {
     if (totalChars === 0) return
     
-    setIsRevealing(true)
+    // Start revealing asynchronously to avoid set-state-in-effect
+    const timeoutId = setTimeout(() => {
+      setIsRevealing(true)
+    }, 0)
+
     const scanDuration = 3000
     const startTime = Date.now()
     
     const chars = contentRef.current?.querySelectorAll('.secret-char')
     if (!chars || chars.length === 0) return
     
-    setTimeout(() => {
+    const initTimeoutId = setTimeout(() => {
       updateScannerPosition(0)
     }, 50)
     
@@ -243,13 +247,18 @@ function SecretAgentReveal({ children }) {
         clearInterval(interval)
         chars.forEach(char => char.classList.add('revealed'))
         updateScannerPosition(chars.length - 1)
-        setTimeout(() => {
+        const completeTimeoutId = setTimeout(() => {
           setIsComplete(true)
         }, 100)
+        return () => clearTimeout(completeTimeoutId)
       }
     }, 16)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      clearTimeout(timeoutId)
+      clearTimeout(initTimeoutId)
+    }
   }, [totalChars])
 
   return (

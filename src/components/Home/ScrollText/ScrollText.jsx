@@ -94,7 +94,7 @@ function ScrollText() {
     }
   }, [isVisible])
 
-  useASCIIShift(isVisible ? textRef.current : null, { dur: 1000, spread: 1 })
+  useASCIIShift(isVisible ? (textRef.current || undefined) : undefined, { dur: 1000, spread: 1 })
 
   return (
     <div ref={containerRef} className="scroll-text-container">

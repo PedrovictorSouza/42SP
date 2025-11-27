@@ -116,7 +116,7 @@ function ModuleExplorador() {
           <p><strong>Formato:</strong> 16:9 (para YouTube e trilha) + versão 9:16 (para Reels/TikTok).</p>
           <p><strong>Ritmo:</strong> ágil, cortes dinâmicos, trilha otimista, e close-ups visuais do Studio.</p>
           <p><strong>Linguagem:</strong> jovem, empática, sem jargões técnicos.</p>
-          <p><strong>Encerramento padrão:</strong> "Agora é contigo! Mostra pro mundo o que você criou."</p>
+          <p><strong>Encerramento padrão:</strong> &quot;Agora é contigo! Mostra pro mundo o que você criou.&quot;</p>
         </div>
       </div>
     </div>

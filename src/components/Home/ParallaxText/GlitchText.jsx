@@ -9,7 +9,7 @@ function GlitchText({ text }) {
   const autoGlitchIntervalRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
-  useASCIIShift(isVisible ? textRef.current : null, { dur: 1000, spread: 1 })
+  useASCIIShift(isVisible ? (textRef.current || undefined) : undefined, { dur: 1000, spread: 1 })
 
   useEffect(() => {
     const timer = setTimeout(() => {

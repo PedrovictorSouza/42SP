@@ -6,10 +6,12 @@ function WorldMapGrid() {
 
   const cells = useMemo(() => {
     return Array.from({ length: totalCells }, (_, i) => {
-      const randomDelay = Math.random() * 15000
+      // Deterministic "random" based on index for stability
+      const pseudoRandom = (Math.sin(i) + 1) / 2
+      const randomDelay = pseudoRandom * 15000
       return { id: i, delay: randomDelay }
     })
-  }, [])
+  }, [totalCells])
 
   return (
     <div className="world-map-container">
