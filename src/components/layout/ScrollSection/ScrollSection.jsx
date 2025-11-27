@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import './ScrollSection.css'
-import { useASCIIShift } from '../ScrollText/useASCIIShift'
-import { useScrollDetection } from '../Home/hooks/useScrollDetection'
+import { useASCIIShift } from '@/components/home/ScrollText/useASCIIShift'
+import { useScrollDetection } from '@/features/home/hooks/useScrollDetection'
 
 const glitchChars = '.,·-─~+:;=*π""┐┌┘┴┬╗╔╝╚╬╠╣╩╦║░▒▓█▄▀▌▐■!?&#$@0123456789*'
 

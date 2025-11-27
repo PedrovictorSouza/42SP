@@ -5,20 +5,20 @@ function ManifestoContent() {
   const renderContent = (item) => {
     switch (item.kind) {
       case 'title':
-        return <h1 className="manifesto-title">{item.content}</h1>
+        return <h1 className="manifesto-title typography-heading">{item.content}</h1>
         
       case 'section-title':
-        return <h2 className="manifesto-section-title">{item.content}</h2>
-
+        return <h2 className="manifesto-section-title typography-heading">{item.content}</h2>
+        
       case 'subtitle':
-        return <h3 className="manifesto-subtitle">{item.content}</h3>
+        return <h3 className="manifesto-subtitle typography-heading">{item.content}</h3>
 
       case 'subsection':
         return <h4 className="manifesto-subsection">{item.content}</h4>
 
       case 'paragraph':
         return (
-          <p>
+          <p className="typography-paragraph">
             {item.content}
             {item.keywords && item.keywords.length > 0 && (
               <div className="manifesto-keywords">

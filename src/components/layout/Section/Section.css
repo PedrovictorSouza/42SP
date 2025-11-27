@@ -70,7 +70,7 @@
   text-align: left;
   margin: 0 0 3rem 0;
   padding: 0;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: 4.8rem;
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
@@ -83,8 +83,12 @@
   cursor: text;
 }
 
+.section-title {
+  font-size: clamp(4.8rem, 9.6vw, 9.6rem);
+}
+
 h1.section-title {
-  font-size: clamp(3rem, 8vw, 6em);
+  font-size: clamp(9rem, 24vw, 18em);
 }
 
 .section-top-line {
@@ -194,14 +198,14 @@ h1.section-title {
 }
 
 .section-text-columns .section-text {
-  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  /* font-size handled by typographyScale.css via .typography-paragraph */
   font-weight: 200;
 }
 
 
 .section-text {
   font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  /* font-size handled by typographyScale.css via .typography-paragraph */
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
   text-align: left;
@@ -220,7 +224,7 @@ h1.section-title {
 }
 
 .section-text.first-text {
-  font-size: clamp(1.26rem, 2.1vw, 1.68rem);
+  /* font-size handled by typographyScale.css via .typography-paragraph */
   font-weight: 700;
   column-count: 1;
 }
@@ -367,7 +371,7 @@ h1.section-title {
   }
   
   .section-text {
-    font-size: clamp(0.85rem, 3vw, 1rem);
+    /* font-size handled by typographyScale.css via .typography-paragraph */
   }
   
   .section-text-columns {

@@ -13,7 +13,7 @@ function TextBlock({ text, isVisible, delay, isFirstBlock = false }) {
     <div className={`section-text-block ${isFirstBlock ? 'first-block' : ''}`}>
       <div 
         ref={textRef}
-        className={`section-text ${isVisible ? 'visible' : ''} ${isFirstBlock ? 'first-text' : ''}`} 
+        className={`section-text typography-paragraph ${isVisible ? 'visible' : ''} ${isFirstBlock ? 'first-text' : ''}`} 
         style={{ transitionDelay: `${delay}s` }}
       >
         {text}
@@ -74,7 +74,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
       {id === 'disclaimer' && gridLayout && (
         <>
         <div className="section-background-content disclaimer-background-image">
-          <img src={jellyfishImage} alt="" className="disclaimer-jellyfish-bg" />
+          <img src={jellyfishImage} alt="" role="presentation" className="disclaimer-jellyfish-bg" />
         </div>
           <AnimatedTextBackground text="ignition" opacity={0.3} />
         </>
@@ -87,7 +87,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
       <div className="section-content-wrapper">
         {headerContent && <div className="section-top-line"></div>}
         {sectionTitle && (
-          <h1 className="section-title">{sectionTitle}</h1>
+          <h2 className="section-title">{sectionTitle}</h2>
         )}
         <div className="section-left">
           {customContent ? (
@@ -99,7 +99,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
           ) : gridLayout ? (
             <div className="section-grid-2x2">
               <div className="section-grid-cell section-full-column">
-                <h1 className="section-title">IGNI<br />TION</h1>
+                <h2 className="section-title">IGNI<br />TION</h2>
               </div>
               <div className="section-grid-cell">
                 {consoleStyle ? (
@@ -116,7 +116,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   />
                 ) : (
                   <h3 
-                    className={`section-text hero-description hero-description-highlight ${isVisible ? 'visible' : ''}`}
+                    className={`section-text hero-description hero-description-highlight typography-paragraph ${isVisible ? 'visible' : ''}`}
                     style={{ transitionDelay: '0s' }}
                   >
                     {topLeftText || ''}
@@ -136,7 +136,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   />
                 ) : (
                   <div 
-                    className={`section-text ${isVisible ? 'visible' : ''}`}
+                    className={`section-text typography-paragraph ${isVisible ? 'visible' : ''}`}
                     style={{ transitionDelay: '0.1s' }}
                   >
                     {topRightText || ''}
@@ -156,7 +156,7 @@ function Section({ id, text, secondParagraph, delay = 0, backgroundColor, header
                   />
                 ) : (
                   <div 
-                    className={`section-text ${isVisible ? 'visible' : ''}`}
+                    className={`section-text typography-paragraph ${isVisible ? 'visible' : ''}`}
                     style={{ transitionDelay: '0.2s' }}
                   >
                     {bottomRightText || ''}

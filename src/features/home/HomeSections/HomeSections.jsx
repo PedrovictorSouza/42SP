@@ -9,14 +9,14 @@ import { getManifestoText } from '@/data/manifesto'
 const sections = [
       {
         id: 'home',
-        title: '[ DESENVOLVEMOS SOLUÇÕES DIGITAIS ]',
+        title: getManifestoText('home.title'),
         text: '',
         delay: 0,
         headerContent: <ParallaxText />
       },
   {
     id: 'disclaimer',
-    title: '[ DISCLAIMER ]',
+    title: getManifestoText('disclaimer.title'),
     text: getManifestoText('disclaimer.full_text'),
     delay: 200,
     backgroundColor: '#000000',
@@ -28,11 +28,17 @@ const sections = [
   },
   {
     id: 'plano-de-voo',
-    title: '[ MISSÃO ]',
+    title: getManifestoText('mission.title'),
     text: getManifestoText('mission.diagnosis'),
     delay: 400,
     backgroundContent: <WorldMapGrid />,
-    sectionTitle: <>PLANO DE<br />VÔO</>,
+    sectionTitle: (
+      <>
+        {getManifestoText('flight_plan.title').split(' ').slice(0, -1).join(' ')}
+        <br />
+        {getManifestoText('flight_plan.title').split(' ').slice(-1)}
+      </>
+    ),
     twoColumns: true,
     consoleStyle: true,
     firstColumnText: getManifestoText('mission.diagnosis'), // Simplified for now, original had forced line breaks
@@ -43,7 +49,13 @@ const sections = [
     title: '',
     text: '',
     delay: 500,
-    sectionTitle: <>COMO<br />FUNCIONA</>,
+    sectionTitle: (
+      <>
+        {getManifestoText('how_it_works.title').split(' ').slice(0, -1).join(' ')}
+        <br />
+        {getManifestoText('how_it_works.title').split(' ').slice(-1)}
+      </>
+    ),
     customContent: <Accordion />
   },
   {

@@ -1,0 +1,20 @@
+/* Typography Scale - Source of Truth
+   Only these 3 font-sizes should exist in the project.
+*/
+
+/* 1. Hero/Heading Scale */
+.typography-heading {
+  font-size: 22pt; /* 22pt is approx 29.33px */
+  /* Allow line-height or weight adjustments via modifiers, but font-size is fixed here */
+}
+
+/* 2. Paragraph Scale (Standard) */
+.typography-paragraph {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+/* 3. Small Scale (Captions, etc) */
+.typography-small {
+  font-size: 0.875rem;
+}
+

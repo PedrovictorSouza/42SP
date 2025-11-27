@@ -1,9 +1,8 @@
 .cascade-text {
   text-align: left;
   line-height: 1;
-  /* font styles now handled by .app-paragraph via @import or global rule if needed, but keeping here for non-paragraph usage */
+  /* font styles handled by typographyScale.css via .typography-paragraph */
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(0.75rem, 1.3vw, 1.05rem);
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   letter-spacing: 0.05em;
@@ -27,7 +26,7 @@
 
 /* Regra específica para a classe hero-description */
 .hero-description.cascade-text.console-style {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 #plano-de-voo .cascade-text.console-style {

@@ -1,5 +1,18 @@
 {
+  "hero": {
+    "slogan": "DEVELOPING FUTURES"
+  },
+  "home": {
+    "title": "[ DESENVOLVEMOS SOLUÇÕES DIGITAIS ]"
+  },
+  "flight_plan": {
+    "title": "PLANO DE VÔO"
+  },
+  "how_it_works": {
+    "title": "COMO FUNCIONA"
+  },
   "disclaimer": {
+    "title": "[ DISCLAIMER ]",
     "intro": "Os projetos deverão se integrar ao fluxo natural de aprendizado da 42SP, respeitando o momento de cada aluno.",
     "financial": "A definição e a distribuição dos valores recebidos pelo LAB deverão seguir critérios claros e previamente estabelecidos.",
     "recognition": "A dedicação dos alunos deverá ser reconhecida com uma compensação adequada ao contexto educacional.",
@@ -11,6 +24,7 @@
     "mission_integration": "As missões do Lab42 são planejadas para se integrar naturalmente a essa rotina de aprendizado, sem interferir no andamento da formação. A participação dos estudantes é voluntária e leva em conta seus momentos acadêmicos, sua prontidão técnica e disponibilidade."
   },
   "mission": {
+    "title": "[ MISSÃO ]",
     "diagnosis": "Cada missão começa com um diagnóstico técnico e pedagógico que permite compreender a natureza do desafio e estimar seu tamanho, complexidade e duração.",
     "squad_formation": "Com base nesse entendimento, o conselho do laboratório valida a missão e forma os squads, combinando perfis e expertises de acordo com as exigências de cada caso."
   },

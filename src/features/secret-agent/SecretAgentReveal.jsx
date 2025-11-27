@@ -268,7 +268,7 @@ function SecretAgentReveal({ children }) {
       ></div>
       <div 
         ref={contentRef}
-        className="secret-agent-content"
+        className="secret-agent-content typography-paragraph"
       >
         {children}
       </div>
